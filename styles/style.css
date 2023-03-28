@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Inter;
+    src: url(../fontes/Inter-VariableFont_slnt\,wght.ttf);
+ }
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+}
+
+body {
+    height: 100vh;
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    margin: 5px 20px 5px 20px;
+}
+
+.navbar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    background-color: #FFF;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.066);
+}
+
+.bold {
+    font-weight: bold;
+}

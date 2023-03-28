@@ -1,0 +1,99 @@
+* {
+    color: white;
+}
+
+.base {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #910DE1;
+}
+
+.cadastro {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 15px 50px 15px 50px;
+    background-color: #ffffff37;
+    border-radius: 15px;
+}
+
+.cadastro > p {
+    font-size: 12px;
+}
+
+#btn-cadastro, #btn-login{
+    display: block;
+    border-radius: 15px;
+    width: 250px;
+    height: 50px;
+    background-color: #0085FF;
+    font-size: 15px;
+    color: white;
+    border: none;
+    margin: 25px 0 0 0;
+    margin: auto;
+}
+
+#btn-login {
+    width: 330px;
+}
+
+.form-login > h1{
+    text-align: center;
+}
+
+.campo-login {
+    display: block;
+    width: 315px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    font-size: 15px;
+    color: black;
+    margin: 20px 0 20px 0;
+    font-weight: 200;
+}
+
+a {
+    font-size: 12px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#btn-cadastro:hover, #btn-login:hover {
+    cursor:pointer;
+    background-color: #0078e9;
+    transition: all ease .2s;
+}
+
+@media (max-width: 820px)
+{
+
+    .base {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+    }
+    .container {
+        border-radius: 20px;
+        background-color: #910DE1;
+        height: 550px;
+        min-width: 415px;
+        max-width: 500px;
+    }
+
+    .teste {
+        display: none;
+    }
+}
