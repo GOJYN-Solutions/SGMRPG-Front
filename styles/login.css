@@ -19,7 +19,7 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 15px 50px 15px 50px;
+    padding: 15px 50px;
     background-color: #ffffff37;
     border-radius: 15px;
 }
@@ -37,16 +37,23 @@
     font-size: 15px;
     color: white;
     border: none;
-    margin: 25px 0 0 0;
-    margin: auto;
+    margin: 25px 0 25px 0;
 }
 
 #btn-login {
     width: 330px;
+    margin: 55px 0;
 }
 
-.form-login > h1{
+.div-login {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.div-login > h1{
     text-align: center;
+    margin-bottom: 100px;
 }
 
 .campo-login {
@@ -58,16 +65,12 @@
     padding: 8px;
     font-size: 15px;
     color: black;
-    margin: 20px 0 20px 0;
+    margin: 20px 0;
     font-weight: 200;
 }
 
 a {
     font-size: 12px;
-}
-
-h1 {
-    text-align: center;
 }
 
 #btn-cadastro:hover, #btn-login:hover {
@@ -88,12 +91,23 @@ h1 {
     .container {
         border-radius: 20px;
         background-color: #910DE1;
-        height: 550px;
+        height: 650px;
         min-width: 415px;
         max-width: 500px;
     }
 
+    .div-login {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-rows: 150px 285px 150px;
+    }
+
     .teste {
         display: none;
+    }
+
+    h1 {
+        margin-bottom: 40px;
     }
 }
