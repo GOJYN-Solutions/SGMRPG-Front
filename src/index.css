@@ -1,6 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
     font-family: Inter;
-    src: url(../fontes/Inter-VariableFont_slnt\,wght.ttf);
+    src: url(../public/fontes/Inter-VariableFont_slnt\,wght.ttf);
  }
 
 * {
@@ -21,7 +24,6 @@ body {
 
 .navbar {
     display: flex;
-    position: fixed;
     align-items: center;
     background-color: #FFF;
     width: 100%;
