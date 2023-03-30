@@ -39,7 +39,7 @@ export default function LoginForm() {
                 <div class="div-login">
                     <h1>LOGIN</h1>
                     <form class="form-login" onSubmit={loginSubmit}>
-                        <input class="campo-login" value={user.email} onChange={(e) => { setUser({...user, email: e.target.value}) }} type="text" placeholder="Nickname ou Email" autofocus/>
+                        <input class="campo-login" value={user.email} onChange={(e) => { setUser({...user, email: e.target.value}) }} type="text" placeholder="Email" autofocus/>
                         <input class="campo-login" value={user.password} onChange={(e) => { setUser({...user, password: e.target.value}) }}  type="password" placeholder="Senha"/>
                         <button id= "btn-login">ENTRAR</button>
                     </form>

@@ -41,15 +41,12 @@ export default function Profile() {
         </div>
         <div className="h-full w-9/12 bg-purple-600 space-y-2 p-5 overflow-auto">
           <p className="font-bold text-2xl">Fichas</p>
-          {
-            fichas.map(ficha => (
+          {fichas.length !=0?fichas.map(ficha => (
               <div className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
                 <p className="font-bold ">{ficha.nm_ficha}</p>
                 <p className="overflow-auto  h-20">{ficha.ds_ficha}</p>
               </div>
-            ))
-            
-          }
+            )):<p>Você não tem fichas...</p>}
           
         </div>
 
