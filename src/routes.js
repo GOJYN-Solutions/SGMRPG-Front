@@ -5,8 +5,6 @@ import Login from './pages/Login';
 
 function Rotas() {
 
-  console.log(localStorage.getItem('id'))
-
   if(localStorage.getItem('id')){
     return(
       <BrowserRouter>

@@ -1,4 +1,4 @@
-import LoginForm from "../components/Forms/Login/indes";
+import LoginForm from "../components/Forms/Login/index.jsx";
 
 export default function Login() {
 
