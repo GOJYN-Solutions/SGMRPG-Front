@@ -33,7 +33,7 @@ export default function LoginForm() {
     }
 
     return(
-        <main className="base pt-16">
+        <main className="base">
             <div class="teste ">teste</div>
             <div class="container">
                 <div class="div-login">

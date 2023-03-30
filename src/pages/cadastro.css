@@ -29,33 +29,36 @@
 
 .form-cadastro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     justify-items: end;
     align-items: end;
 }
 
 .div-cadastro {
     display: grid;
-    grid-template-rows: 100px 350px 100px;
+    grid-template-rows: 100px 350px;
     justify-items: center;
     align-items: center;
 }
 
 .div-cadastro > h1{
     text-align: center;
-    margin: 0 0 50px 0;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 50px;
 }
 
 .campo-cadastro {
-    display: block;
-    width: 315px;
-    height: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    height: 40px;
     border-radius: 5px;
     border: none;
     padding: 8px;
     font-size: 15px;
     color: black;
-    margin: 20px 20px 20px 0;
+    margin: 20px 0;
     font-weight: 200;
 }
 
