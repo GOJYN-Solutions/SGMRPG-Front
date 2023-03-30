@@ -5,17 +5,34 @@ import Login from './pages/Login';
 
 function Rotas() {
 
-  return(
-    <BrowserRouter>
-     <Navbar/>
-        <Routes>
-            <Route path='*' element="404"></Route>
-            <Route path='/login' element={<Login/>}></Route>
-            <Route path='/profile' element={<Profile/>}></Route>
-            
-        </Routes>
-    </BrowserRouter>
-  )
+  console.log(localStorage.getItem('id'))
+
+  if(localStorage.getItem('id')){
+    return(
+      <BrowserRouter>
+       <Navbar/>
+          <Routes>
+              <Route path='/home' element={<Profile/>}></Route>
+              <Route path='/profile' element={<Profile/>}></Route>
+              <Route path='*' element={<Profile/>}></Route>
+              
+          </Routes>
+      </BrowserRouter>
+    )
+  }else{
+    return(
+      <BrowserRouter>
+       <Navbar/>
+          <Routes>
+              <Route path='/login' element={<Login/>}></Route>
+              <Route path='/register' element={<Login/>}></Route>
+              <Route path='*' element={<Login/>}></Route>
+              
+          </Routes>
+      </BrowserRouter>
+    )
+  }
+  
 
 }
 

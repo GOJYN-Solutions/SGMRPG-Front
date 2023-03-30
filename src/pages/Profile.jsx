@@ -1,4 +1,30 @@
+import { useEffect, useState } from "react"
+import axios from 'axios'
+//http://localhost:3333/users/1/fichas
 export default function Profile() {
+
+  const [userName, setUserName] = useState('')
+  const [fichas, setFichas] = useState({
+    lista: []
+  })
+
+  useEffect(() => {
+    axios.get(`http://localhost:3333/users/${localStorage.getItem('id')}`)
+    .then(res => {
+      setUserName(res.data[0].nm_user)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    axios.get(`http://localhost:3333/users/${localStorage.getItem('id')}/fichas`)
+    .then(res => {
+      console.log(res.data[0].nm_ficha)
+     
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  });
 
   return(
     <div className="w-screen h-screen pt-10 ">
@@ -11,7 +37,7 @@ export default function Profile() {
             <img className="" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
           </div>
           <div>
-            <p>UserName</p>
+            <p className="capitalize ">{userName}</p>
           </div>
         </div>
         <div className="h-full w-9/12 bg-purple-600 space-y-2 p-5">
@@ -21,6 +47,7 @@ export default function Profile() {
               <p className="overflow-auto  h-20"> has been the industry's standard dummy text ever since the 1500s, when an unknown printe took a galley of type and scrambled it to make a type specimen book. It has survived not only fhas been the industry's standard dummy text ever since the 1500s, when an unknown printe took a galley of type and scrambled it to make a type specimen book. It has survived not only fhas been the industry's standard dummy text ever since the 1500s, when an unknown printe took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
           </div>
         </div>
+        
       </div>
     </div>
   )
