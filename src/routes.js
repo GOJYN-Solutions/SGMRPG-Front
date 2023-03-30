@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register'
 import RegisterFicha from './pages/RegisterFicha';
+import UpdateFicha from './pages/UpdateFicha';
 
 function Rotas() {
 
@@ -15,6 +16,7 @@ function Rotas() {
               <Route path='/home' element={<Profile/>}></Route>
               <Route path='/profile' element={<Profile/>}></Route>
               <Route path='/registerFicha' element={<RegisterFicha/>}></Route>
+              <Route path='/updateFicha' element={<UpdateFicha/>}></Route>
               <Route path='*' element={<Profile/>}></Route>
               
           </Routes>

@@ -40,25 +40,32 @@ export default function Profile() {
           <div className="flex flex-row justify-between">
             <p className="font-bold text-2xl">Fichas</p>
             <div>
-              <button onClick={e=> window.location = 'http://localhost:3000/registerFicha'} className="bg-green-700 p-3 rounded-xl">Criar</button>
-            
+              <button onClick={e => window.location = 'http://localhost:3000/registerFicha'} className="bg-green-700 p-3 rounded-xl">Criar</button>
+
             </div>
           </div>
-          {fichas.length !=0?fichas.map(ficha => (
-              <div key={ficha.cd_ficha} className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
-                <div className="flex justify-between">
-                  <p className="font-bold ">{ficha.nm_ficha}</p>
-                  <button onClick={e=> {
+          {fichas.length != 0 ? fichas.map(ficha => (
+            <div key={ficha.cd_ficha} className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
+              <div className="flex justify-between">
+                <p className="font-bold ">{ficha.nm_ficha}</p>
+                <div className="space-x-2">
+                  <button onClick={e => {
+                    localStorage.setItem('id_ficha', ficha.cd_ficha)
+                    window.location = 'http://localhost:3000/updateFicha'
+                  }} className="bg-yellow-700 p-1 rounded-xl">Editar</button>
+                  <button onClick={e => {
                     axios.delete(`http://localhost:3333/users/${localStorage.getItem('id')}/ficha/${ficha.cd_ficha}`)
                     window.location = window.location
-                    }} className="bg-red-700 p-1 rounded-xl">Deletar</button>
+                  }} className="bg-red-700 p-1 rounded-xl">Deletar</button>
 
                 </div>
-                <p className="overflow-auto  h-20">{ficha.ds_ficha}</p>
-                
+
               </div>
-            )):<p>Você não tem fichas...</p>}
-          
+              <p className="overflow-auto  h-20">{ficha.ds_ficha}</p>
+
+            </div>
+          )) : <p>Você não tem fichas...</p>}
+
         </div>
 
       </div>
