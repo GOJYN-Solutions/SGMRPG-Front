@@ -12,15 +12,12 @@ export default function Profile() {
         setUserName(res.data[0].nm_user)
       })
       .catch(err => {
-        console.log(err)
       })
     axios.get(`http://localhost:3333/users/${localStorage.getItem('id')}/fichas`)
       .then(res => {
-        console.log(res.data)
         setFichas(res.data)
       })
       .catch(err => {
-        console.log(err)
       })
   }, []);
 
@@ -40,11 +37,25 @@ export default function Profile() {
           </div>
         </div>
         <div className="h-full w-9/12 bg-purple-600 space-y-2 p-5 overflow-auto">
-          <p className="font-bold text-2xl">Fichas</p>
+          <div className="flex flex-row justify-between">
+            <p className="font-bold text-2xl">Fichas</p>
+            <div>
+              <button onClick={e=> window.location = 'http://localhost:3000/registerFicha'} className="bg-green-700 p-3 rounded-xl">Criar</button>
+            
+            </div>
+          </div>
           {fichas.length !=0?fichas.map(ficha => (
-              <div className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
-                <p className="font-bold ">{ficha.nm_ficha}</p>
+              <div key={ficha.cd_ficha} className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
+                <div className="flex justify-between">
+                  <p className="font-bold ">{ficha.nm_ficha}</p>
+                  <button onClick={e=> {
+                    axios.delete(`http://localhost:3333/users/${localStorage.getItem('id')}/ficha/${ficha.cd_ficha}`)
+                    window.location = window.location
+                    }} className="bg-red-700 p-1 rounded-xl">Deletar</button>
+
+                </div>
                 <p className="overflow-auto  h-20">{ficha.ds_ficha}</p>
+                
               </div>
             )):<p>Você não tem fichas...</p>}
           
