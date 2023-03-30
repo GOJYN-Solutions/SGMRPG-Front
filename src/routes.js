@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
+import Register from './pages/Register'
 
 function Rotas() {
 
@@ -23,7 +24,7 @@ function Rotas() {
        <Navbar/>
           <Routes>
               <Route path='/login' element={<Login/>}></Route>
-              <Route path='/register' element={<Login/>}></Route>
+              <Route path='/register' element={<Register/>}></Route>
               <Route path='*' element={<Login/>}></Route>
               
           </Routes>

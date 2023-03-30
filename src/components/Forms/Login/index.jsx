@@ -45,7 +45,7 @@ export default function LoginForm() {
                     </form>
                     <div class="cadastro">
                         <p>Não possui uma conta?</p>
-                        <button id="btn-cadastro">CADASTRE-SE</button>
+                        <button onClick={e => window.location = 'http://localhost:3000/register'} id="btn-cadastro">CADASTRE-SE</button>
                     </div>
                 </div>
             </div>

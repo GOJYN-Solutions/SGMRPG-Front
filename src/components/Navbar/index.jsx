@@ -10,7 +10,7 @@ export default function Navbar() {
                 </div>
                 <p className="text-black"> <button onClick={e => {
                     localStorage.clear()
-                    window.location.href = window.location.href
+                    window.location.href = 'http://localhost:3000/login'
                 }}>Sair</button> </p>
             </nav>
         </header>

@@ -26,7 +26,7 @@ export default function Profile() {
 
 
   return (
-    <div className="w-screen h-screen pt-10 ">
+    <div className="w-screen h-screen pt-14 ">
       <div className="w-full h-1/5 overflow-hidden flex p-5 justify-end bg-[url('https://ordemparanormal.com.br/wp-content/uploads/2021/09/TRSlNehdWzs-HD.jpg')] bg-cover">
         <button className="bg-red-900 h-12 w-24 rounded-full "><div>Editar</div></button>
       </div>
@@ -36,7 +36,7 @@ export default function Profile() {
             <img className="" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
           </div>
           <div>
-            <p className="capitalize ">{userName}</p>
+            <p className="capitalize ">@{userName}</p>
           </div>
         </div>
         <div className="h-full w-9/12 bg-purple-600 space-y-2 p-5 overflow-auto">
@@ -45,15 +45,12 @@ export default function Profile() {
             fichas.map(ficha => (
               <div className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
                 <p className="font-bold ">{ficha.nm_ficha}</p>
-                <p className="overflow-auto  h-20">xt ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p className="overflow-auto  h-20">{ficha.ds_ficha}</p>
               </div>
             ))
             
           }
-          <div className="w-full p-2 h-32 space-y-3 rounded-md bg-purple-950 overflow-hidden ">
-                <p className="font-bold ">a</p>
-                <p className="overflow-auto  h-20">xt ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-              </div>
+          
         </div>
 
       </div>
