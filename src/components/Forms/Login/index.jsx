@@ -43,9 +43,9 @@ export default function LoginForm() {
                 <div className='w-full space-y-10'>
                     <p className='text-black font-Inder font-semibold text-[40px] text-center'>LOGIN</p>
                     <div className='w-full space-y-7'>
-                        <input type="text" id="first_name" class={inputStyle} placeholder="Nickname ou email" onChange={(e) => { setUser({...user, email: e.target.value}) }} autofocus/>
+                        <input type="text" id="first_name" class={inputStyle} placeholder="Nickname ou email" onChange={(e) => { setUser({...user, email: e.target.value}) }} value={user.username} autofocus/>
                         <div>
-                            <input class={inputStyle} placeholder="Senha" onChange={(e) => { setUser({...user, password: e.target.value}) }}  type="password" required></input>
+                            <input class={inputStyle} placeholder="Senha" onChange={(e) => { setUser({...user, password: e.target.value}) }}  value={user.password} type="password" required></input>
                             <button className='text-[#B4B2B2] pl-2.5 pt-3 underline'>Esqueci a senha</button>
                         </div>
                         <button className='text-black bg-[#D9D9D9] w-full p-2.5 rounded-full' onClick={e => {loginSubmit()}}>ENTRAR</button>

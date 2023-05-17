@@ -3,7 +3,7 @@ export default function Navbar() {
     if(localStorage.getItem('id')){
         return(
             <header>
-            <nav class="navbar flex flex-row justify-between px-6">
+            <nav class="navbar flex flex-row justify-between  border-solid border-2 px-6">
                 <div className="flex fles-col items-center">
                 <img className="logo " src="imagens/logo.png"/>
                 <p className="text-black"><span className="bold text-black">SGMRPG </span> by GOJYN Solutions</p>
@@ -19,7 +19,7 @@ export default function Navbar() {
     else{
         return(
         <header>
-            <nav class="navbar justify-between">
+            <nav class="navbar justify-between border-solid border-2">
                 <div className="flex flex-row items-center">
                     <img class="logo" src="imagens/logo.png"/>
                     <p className="text-black"><span className="bold text-black">SGMRPG </span> by GOJYN Solutions</p>     
