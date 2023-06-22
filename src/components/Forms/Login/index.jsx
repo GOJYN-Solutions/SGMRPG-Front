@@ -12,21 +12,22 @@ export default function LoginForm() {
     })
 
     function loginSubmit(){
-       
-        console.log(user)
-        axios.post('http://localhost:3333/login', {
-            email: user.email,
-            senha: user.password
+        axios.post('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/login', {
+            userData: user.email,
+            pwd: user.password
         })
         .then(resp => {
-            console.log(resp.data.length)
-            if(resp.data.length > 0){
-                localStorage.setItem('id', resp.data[0].cd_user)
-                window.locale = window.locale
+            console.log(resp)
+            if(resp.data.resp != "Credenciais inválidas!"){
+                alert(resp.data.resp)
+
+                localStorage.setItem('token', resp.data.token)
+                console.log(resp.data.token)
                 window.location.href = window.location.href
+
             }
             else{
-                alert("Usuário invalido")
+                alert(resp.data.resp)
             }
         })
         .catch(err => {
@@ -37,7 +38,7 @@ export default function LoginForm() {
     return(
         <div className='h-screen w-screen bg-gradient-to-b from-[#A52EFF] via-[#D186FF] to-[#ECCCFF] flex flex-row justify-between p-6 space-x-16'>
             <div className='py-14 w-1/2 rounded-lg flex items-center'>
-                <img className='rounded-lg ' src="https://mega.ibxk.com.br/2022/05/03/03001446876621.jpg" alt="" />
+                <a href="Homepage.jsx"><img className='rounded-lg ' src="https://mega.ibxk.com.br/2022/05/03/03001446876621.jpg" alt="" /></a>
             </div>
             <div className='bg-white w-1/2 rounded-lg p-28 flex flex-col items-center space-y-12 justify-center'>
                 <div className='w-full space-y-10'>

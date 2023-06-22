@@ -20,9 +20,9 @@ export default function DropdownNavbar({imgURL}) {
                 
                 <div className="bg-white shadow-lg  mt-1 absolute rounded-b-md flex flex-col p-2 gap-2">
                     <p className={texts}><button onClick={()=>{window.location.href = 'http://localhost:3000/profile'}}> PERFIL </button></p>
-                    <p className={texts}><button> FICHAS </button></p>
-                    <p className={texts}><button> CAMPANHAS </button></p>
-                    <p className={texts}><button> CONFIGURAÇÕES </button></p>
+                    <p className={texts}><button onClick={()=>{window.location.href = 'http://localhost:3000/fichas'}}> FICHAS </button></p>
+                    <p className={texts}><button onClick={()=>{window.location.href = 'http://localhost:3000/campanhas'}}> CAMPANHAS </button></p>
+                    {/* <p className={texts}><button> CONFIGURAÇÕES </button></p> */}
                     <p className={`${texts} text-red-600`}>
                         <button onClick={()=>{
                             localStorage.clear()
