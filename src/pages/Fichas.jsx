@@ -119,13 +119,13 @@ export default function Fichas() {
           <div className=" flex items-center">
             <div className="w-3/4 flex items-center gap-4">
               <p className="font-Inder text-sm text-[#A52EFF] font-bold">FILTRAR</p>
-              <input placeholder="nome da ficha" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded"
+              <input placeholder="nome da ficha" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded p-2"
                 onChange={e=>{setFiltro({...filtro, nmFicha: e.target.value})}}
               />
-              <input placeholder="tipo" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded"
+              <input placeholder="tipo" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded p-2"
                 onChange={e=>{setFiltro({...filtro, nmTipo: e.target.value})}}
               />
-              <select placeholder="próprias" className="bg-[#D9D9D9] h-8 w-32 rounded"
+              <select placeholder="próprias" className="bg-[#D9D9D9] h-8 w-32 rounded px-2 text-[#AEAEB6]"
                 onChange={e=>{setFiltro({...filtro, minhas: e.target.value=="1"?true:false, publico: '', nickname: ''})}}
               >
                 <option value="0">Outras</option>
@@ -133,7 +133,7 @@ export default function Fichas() {
               </select>
 
               {!filtro.minhas && 
-                <input placeholder="nickname" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded"
+                <input placeholder="nickname" type="text" className="bg-[#D9D9D9] h-8 w-32 rounded p-2"
                   onChange={e=>{setFiltro({...filtro, nickname: e.target.value})}}
                 />
               }
