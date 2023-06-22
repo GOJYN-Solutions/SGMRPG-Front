@@ -34,7 +34,6 @@ export default function Campanhas() {
       let filtros = `?nmNick=${filtro.nickname}&nmCampaign=${filtro.nmCampaign}&qtMinAge=${filtro.qtMinAge}`
       axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/campanha/all${filtros}`)
       .then(resp => {
-        console.log(resp.data.items)
         setCampanhas(resp.data.items)
       })
       .catch(err => {
@@ -147,14 +146,14 @@ export default function Campanhas() {
               setNewCampanha({
                 nmCampaign: '',
                 dsCampaign: '',
-                qtMinAge: '',
+                qtMinAge: null,
                 dsStory: '',
                 icPublic: false
               })
             }}  
           ></div>
 
-          {/*newCampaign*/}
+          {/*newCam*/}
           <div style={{
             width: '32%',
             // height: '80%',
@@ -204,7 +203,7 @@ export default function Campanhas() {
 
               <input type="number" value={newCampanha.qtMinAge} onChange={e=>{setNewCampanha({...newCampanha, qtMinAge: e.target.value})}}
                 style={{
-                  borderRadius: 5, width: '68%', height: 37, backgroundColor: '#FBF4FF', padding: 8, color: 'black', float: 'right'
+                  borderRadius: 5, width: '85%', height: 37, backgroundColor: '#FBF4FF', padding: 8, color: 'black', float: 'right'
                 }} 
               />
             </div>
@@ -222,16 +221,6 @@ export default function Campanhas() {
                 }} 
                 onClick={()=>{setNewCampanha({...newCampanha, icPublic: !newCampanha.icPublic})}}
               >Tornar público? <span style={{fontWeight: 'bold', color: newCampanha.icPublic?'limegreen':'coral'}}>{newCampanha.icPublic?"Sim":"Não"}</span></p>
-            </div>
-
-            <div style={{marginBottom: 15}}>
-              <p 
-                style={{color: 'black', fontSize: 20, display: 'inline'}} 
-              >História</p>
-
-              <textarea value={newCampanha.dsStory} cols="30" rows="10" onChange={e=>{setNewCampanha({...newCampanha,dsStory: e.target.value})}}
-                style={{backgroundColor: '#FBF4FF', borderRadius: 5, width: '100%', height: 150, color: 'black', padding: 10, resize: 'none'}}
-              ></textarea>
             </div>
 
             <button 

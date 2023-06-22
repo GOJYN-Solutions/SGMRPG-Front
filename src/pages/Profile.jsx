@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 //http://localhost:3333/users/1/fichas
-export default function Profile() {
+import SheetCard from "../components/SheetCard/SheetCard";
 
+import CampaignCard from "../components/CampaignCard/CampaignCard";
+import moment from 'moment'
+
+export default function Profile() {
   // const [userName, setUserName] = useState('')
-  const [fichas, setFichas] = useState([{cd_ficha: 'teste', nm_ficha: 'test2'}])
+  //const [fichas, setFichas] = useState([{cd_ficha: 'teste', nm_ficha: 'test2'}])
   const [user, setUser] = useState({
     codigo: '',
     nick: '',
@@ -33,10 +37,86 @@ export default function Profile() {
     })
   }, []);
 
+  const [fichas, setFichas] = useState([])
+
+  const [campanhas, setCampanhas] = useState([])
+  const [campaignLayout, setCampaignLayout] = useState(false)
+  const [campanha, setCampanha] = useState()
+
+  const [blackGround, setBlackground] = useState(false)
+  const [createForm, setCreateForm] = useState(false)
+  const [sheetLayout, setSheetLayout] = useState(false)
+  const [ficha, setFicha] = useState()
+
+  const [newFicha, setNewFicha] = useState({
+    nmFicha: '',
+    nmTipo: 'personagem',
+    dsFicha: '',
+    publico: false
+  })
+
+  const [newCampanha, setNewCampanha] = useState({
+    nmCampaign: '',
+    dsCampaign: '',
+    qtMinAge: '',
+    dsStory: '',
+    icPublic: false
+  })
+
+    const [filtro, setFiltro] = useState({
+      nmFicha: '',
+      nmTipo: '',
+      nickname: '',
+      publico: "",
+      minhas: false
+    })
+
+    console.log(user)
+
+    useEffect(() => {
+      axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/ficha/profile`,{
+        'headers':{
+          auth: localStorage.getItem('token')
+        }
+      })
+      .then(resp => {
+          setFichas(resp.data.items)
+      })
+    }, []);
+
+    useEffect(() => {
+      axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/campanha/profile`,{
+        'headers':{
+          auth: localStorage.getItem('token')
+        }
+      })
+      .then(resp => {
+          setCampanhas(resp.data.items)
+      })
+    }, []);
+
+    function changeSheetLayout(){
+      setSheetLayout(!sheetLayout)
+      setBlackground(!blackGround)
+    }
+
+    function changeCampaignLayout(){
+    setCampaignLayout(!campaignLayout)
+    setBlackground(!blackGround)
+  }
+
 
   return (
     <div className="w-screen h-screen bg-[#AA36FF] pt-12 px-16">
       <div className="h-full w-full bg-white flex flex-col">
+        <div>
+          {/*Tela da Ficha*/}
+          
+          
+        </div>
+          {/**aqui*/}
+        {/*Tela da Ficha*/}
+          
         <div className="h-2/6 overflow-hidden flex bg-[url('https://ordemparanormal.com.br/wp-content/uploads/2021/09/TRSlNehdWzs-HD.jpg')] bg-cover">
           <div className="h-full w-full flex justify-end items-center pb-8 px-4">
             {/* <button className="bg-[#A52EFF] h-12 w-24 rounded-full"><div>Editar</div></button> */}
@@ -47,30 +127,120 @@ export default function Profile() {
         <div className="w-3/12 flex flex-col absolute justify-center items-center gap-4 pr-8 pt-28">
           <img className="w-40" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
           <p className="font-semibold text-2xl text-black">{user.nick}</p>
-          <div className="w-full p-4">
+          <div className="w-full p-4 flex flex-col gap-4">
             <div className="bg-[#F7EBFF] rounded-2xl p-8  "> 
               <p className="font-Inder text-lg text-center text-black">{user.desc}</p>  
             </div>
+            <div className="rounded-2xl p-8 "> 
+              <p className="font-Inder text-lg text-center text-black text-start">{user.email}</p>  
+            </div>
+            <div className="rounded-2xl p-8 "> 
+              <p className="font-Inder text-lg text-center text-black text-start">{moment(user.birth).add(1, 'days').format('DD/MM/YYYY')}</p>  
+            </div>
           </div> 
         </div>
+
+        {/*grayBackground*/}
+        <div 
+              className={blackGround?"w-full h-100 bg-neutral-700/75 absolute inset-0":"hidden"} 
+              onClick={()=>{
+                setBlackground(!blackGround)
+                setCreateForm(false)
+                setSheetLayout(false)
+                setCampaignLayout(false)
+                setNewFicha({
+                  nmFicha: '',
+                  nmTipo: 'personagem',
+                  dsFicha: '',
+                  publico: false
+                })
+              }}  
+            ></div>
+            {sheetLayout &&
+              <SheetCard ficha={ficha} changeSheetLayout={changeSheetLayout} sheetLayout={sheetLayout} />
+            }
+            {campaignLayout &&
+              <CampaignCard campanha={campanha} changeCampaignLayout={changeCampaignLayout} />
+            }
 
         <div className="h-full">
             <div className="h-4/5  flex flex-row bg-white">
               <div className="h-full w-3/12 flex flex-col border-r-2 pt-12">
                 
               </div>
-              <div className="w-9/12 flex flex-ROW h-full px-12 pt-10 pb-14 gap-5">
+              <div className="w-9/12 flex flex-row h-full px-12 pt-10 gap-5">
                 <div className="h-full w-1/2 space-y-2">
-                  <p className="text-black pl-4 font-Inder">SUAS CAMPANHAS</p>
-                  <div className="h-full w-full bg-[#EDD9FA] rounded-[20px]">
+                  <p className="text-black pl-4 font-Inder">SUAS FICHAS</p>
+                  <div className="h-full w-full bg-[#EDD9FA] rounded-[20px] overflow-y-auto scrollbar">
+                  <div className="w-full h-full flex flex-wrap gap-6 overflow-y-auto scrollbar">
+            <div className="h-1/2 w-full flex flex-wrap gap-4 p-2">
 
+              {
+                fichas.map((ficha)=>{
+                  return(
+                    <div style={{cursor:'pointer'}} className="w-60 h-40 bg-[#D9D9D9] rounded-md shadow-xl p-3 flex flex-col gap-2"
+                      onClick={()=>{
+                        setBlackground(!blackGround)
+                        setSheetLayout(true)
+                        setFicha(ficha)
+                      }}
+                    >
+                      
+                      <div className="w-full">
+                        <p className="text-black text-base font-semibold truncate">{ficha.nm_sheet}</p>
+                      </div>
+                      <div className="h-full w-full overflow-y-auto scrollbar">
+                        <p className="text-black text-sm font-Inder">{ficha.ds_sheet}</p>
+                      </div>
+                      <div className="w-full flex items-end justify-between">
+                        <p className="text-sm font-semibold text-black">{ficha.nm_type}</p>
+                        <p className="text-sm font-semibold text-black">Por {ficha.nm_nick}</p>
+                      </div>
+                    </div>
+                  )
+                })
+              }
+
+            </div> 
+          </div>
                   </div>
                 </div>
 
                 <div className="h-full w-1/2 space-y-2">
-                  <p className="text-black pl-4 font-Inder">SUAS FICHAS</p>
-                  <div className="h-full w-full bg-[#EDD9FA] rounded-[20px]">
+                  <p className="text-black pl-4 font-Inder">SUAS CAMPANHAS</p>
+                  <div className="h-full w-full bg-[#EDD9FA] rounded-[20px] overflow-y-auto scrollbar ">
+                    <div className="h-1/2 w-full flex flex-wrap gap-4 p-2">
+                      {
+                        campanhas.map((campanha)=>{
+                          console.log(campanhas)
+                          return(
+                            <div style={{cursor:'pointer'}} className="w-60 h-40 bg-[#D9D9D9] rounded-md shadow-xl p-3 flex flex-col gap-2"
+                              onClick={()=>{
+                                setBlackground(!blackGround)
+                                setCampaignLayout(true)
+                                setCampanha(campanha)
+                              }}
+                            >
+                              
+                              <div className="w-full">
+                                <p className="text-black text-base font-semibold truncate">{campanha.nm_campaign}</p>
+                              </div>
+                              <div className="h-full w-full overflow-y-auto scrollbar">
+                                <p className="text-black text-sm font-Inder">{campanha.ds_campaign}</p>
+                              </div>
+                              <div className="w-full flex items-end justify-between">
+                                <p 
+                                  style={{backgroundColor: 'black', padding: 5, borderRadius: 10}}
+                                  className="text-sm font-semibold text-white"
+                                >+{campanha.qt_minimal_age}</p>
+                                <p className="text-sm font-semibold text-black">Por {campanha.nm_nick}</p>
+                              </div>
+                            </div>
+                          )
+                        })
+                      }
 
+                    </div> 
                   </div>
                 </div>
             </div>
@@ -154,4 +324,17 @@ export default function Profile() {
           // </div> 
         }
 
-      </div> */}
+      </div> 
+    
+        
+    
+    
+    */}
+
+
+
+
+
+
+
+      

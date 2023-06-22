@@ -7,10 +7,12 @@ import SheetCard from "../components/SheetCard/SheetCard";
 export default function Fichas() {
 
     const [fichas, setFichas] = useState([])
+    const [campanhas, setCampanhas] = useState([])
 
     const [blackGround, setBlackground] = useState(false)
     const [createForm, setCreateForm] = useState(false)
     const [sheetLayout, setSheetLayout] = useState(false)
+    const [campaignLayout, setCampaignLayout] = useState(false)
     const [ficha, setFicha] = useState()
 
     const [newFicha, setNewFicha] = useState({
@@ -40,6 +42,31 @@ export default function Fichas() {
         })
       }else{
         let filtros = `?icPublic=${filtro.publico}&nmSheet=${filtro.nmFicha}&nmNick=${filtro.nickname}&nmType=${filtro.nmTipo}`
+        
+        axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/ficha/profile${filtros}`,{
+          'headers':{
+            auth: localStorage.getItem('token')
+          }
+        })
+        .then(resp => {
+            setFichas(resp.data.items)
+        })
+      }
+    }, [newFicha, filtro, sheetLayout]);
+
+    useEffect(() => {
+      if(!filtro.minhas){
+        let filtros = `?nmSheet=${filtro.nmFicha}&nmNick=${filtro.nickname}&nmType=${filtro.nmTipo}`
+        axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/ficha/all${filtros}`)
+        .then(resp => {
+            setFichas(resp.data.items)
+        })
+        .catch(err => {
+
+        })
+      }else{
+        let filtros = `?icPublic=${filtro.publico}&nmSheet=${filtro.nmFicha}&nmNick=${filtro.nickname}&nmType=${filtro.nmTipo}`
+        
         axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/ficha/profile${filtros}`,{
           'headers':{
             auth: localStorage.getItem('token')

@@ -47,7 +47,9 @@ export default function SheetCard({ficha, changeSheetLayout}) {
           auth: localStorage.getItem('token')
         }
       }).then(res=>{
-        alert(res.data.resp)
+        alert("Ação concluida com sucesso!")
+        changeSheetLayout()
+        window.location.href = window.location.href
       })
     }
     
@@ -59,6 +61,7 @@ export default function SheetCard({ficha, changeSheetLayout}) {
       }).then(res=>{
         alert(res.data.resp)
         changeSheetLayout()
+        window.location.href = window.location.href
       })
     }
 
