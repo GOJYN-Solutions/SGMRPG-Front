@@ -4,6 +4,16 @@ import DataTable from "react-data-table-component";
 
 export default function Campanhas() {
 
+      const [user, setUser] = useState({
+        codigo: '',
+        nick: '',
+        email: '',
+        desc: '',
+        imagem: '',
+        banner: '',
+        birth: ''
+    })
+    
     const [companhas, setCampanhas] = useState([])
 
     useEffect(() => {

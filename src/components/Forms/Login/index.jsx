@@ -23,7 +23,7 @@ export default function LoginForm() {
 
                 localStorage.setItem('token', resp.data.token)
                 console.log(resp.data.token)
-                window.location.href = window.location.href
+                window.location.href = 'http://localhost:3000/homepage'
 
             }
             else{

@@ -40,7 +40,32 @@ export default function Fichas() {
               <button className="bg-[#AA36FF] rounded-full p-2 font-light font-Inder text-base">NOVA FICHA</button>
             </div>
           </div>
-          <div className="w-full h-full flex flex-col gap-6">
+
+          <div className="w-full h-full flex flex-wrap gap-6 overflow-y-auto scrollbar">
+            <div className="h-1/2 w-full flex flex-wrap gap-4">
+
+              {
+                fichas.map((ficha)=>{
+                  return(
+                    <div className="w-60 h-40 bg-[#D9D9D9] rounded-md shadow-xl p-3 flex flex-col gap-2">
+                      <div className="w-full">
+                        <p className="text-black text-base font-semibold truncate">{ficha.nm_sheet}</p>
+                      </div>
+                      <div className="h-full w-full overflow-y-auto scrollbar">
+                        <p className="text-black text-sm font-Inder">{ficha.ds_sheet}</p>
+                      </div>
+                      <div className="w-full flex items-end justify-between">
+                        <p className="text-sm font-semibold text-black">{ficha.nm_type}</p>
+                        <p className="text-sm font-semibold text-black">Por {ficha.nm_nick}</p>
+                      </div>
+                    </div>
+                  )
+                })
+              }
+
+            </div> 
+          </div>
+          {/* <div className="w-full h-full flex flex-col gap-6">
             <div className="h-1/2 w-full flex gap-4">
               {
                 fichas.map((ficha, i)=>{
@@ -87,7 +112,7 @@ export default function Fichas() {
                 })
               }
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

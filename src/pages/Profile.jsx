@@ -3,22 +3,34 @@ import axios from 'axios'
 //http://localhost:3333/users/1/fichas
 export default function Profile() {
 
-  const [userName, setUserName] = useState('')
+  // const [userName, setUserName] = useState('')
   const [fichas, setFichas] = useState([{cd_ficha: 'teste', nm_ficha: 'test2'}])
+  const [user, setUser] = useState({
+    codigo: '',
+    nick: '',
+    email: '',
+    desc: '',
+    imagem: '',
+    banner: '',
+    birth: ''
+  })
 
   useEffect(() => {
-    axios.get(`http://localhost:3333/users/${localStorage.getItem('id')}`)
-      .then(res => {
-        setUserName(res.data[0].nm_user)
+    axios.get('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/profile',{
+      'headers':{
+          auth: localStorage.getItem('token')
+      }
+    }).then(res=>{
+      setUser({
+        codigo: res.data.items[0].cd_user,
+        nick: res.data.items[0].nm_nick,
+        email: res.data.items[0].nm_email,
+        desc: res.data.items[0].ds_user,
+        imagem: res.data.items[0].im_profile,
+        banner: res.data.items[0].im_banner,
+        birth: res.data.items[0].dt_birth
       })
-      .catch(err => {
-      })
-    axios.get(`http://localhost:3333/users/${localStorage.getItem('id')}/fichas`)
-      .then(res => {
-        setFichas(res.data)
-      })
-      .catch(err => {
-      })
+    })
   }, []);
 
 
@@ -34,10 +46,10 @@ export default function Profile() {
 
         <div className="w-3/12 flex flex-col absolute justify-center items-center gap-4 pr-8 pt-28">
           <img className="w-40" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
-          <p className="font-semibold text-2xl text-black">@{userName}USER123</p>
+          <p className="font-semibold text-2xl text-black">{user.nick}</p>
           <div className="w-full p-4">
             <div className="bg-[#F7EBFF] rounded-2xl p-8  "> 
-              <p className="font-Inder text-lg text-center text-black">“testando”</p>  
+              <p className="font-Inder text-lg text-center text-black">{user.desc}</p>  
             </div>
           </div> 
         </div>

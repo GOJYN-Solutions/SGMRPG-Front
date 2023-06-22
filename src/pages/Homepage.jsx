@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react"
+import axios from 'axios'
+
 import Navbar from "../components/Navbar"
 import HomepageModal from "../components/HomepageModal/HomepageModal"
-import { useEffect, useState } from "react"
+
+
 export default function Homepage() {
 
     let purple = "text-[#A52EFF]"
@@ -25,11 +29,12 @@ export default function Homepage() {
               setColor("A52EFF")
               break;
       }
+
   }, [modal])
 
     return(
       <div className="overflow-hidden">
-        <Navbar/>
+        <Navbar />
         <div className="pt-14 h-screen w-screen flex">
           <div className="w-1/2 h-full flex items-center justify-center">
             <div className="flex flex-col gap-5">
