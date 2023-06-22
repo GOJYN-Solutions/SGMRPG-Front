@@ -120,6 +120,7 @@ export default function SheetCard({ficha, changeSheetLayout}) {
             >Descrição</p>
 
             <textarea cols="30" rows="10"
+              maxLength={70}
               style={{backgroundColor: '#FBF4FF', borderRadius: 5, width: '100%', height: 300, color: 'black', padding: 10, resize: 'none'}}
               value={fichaInfo.ds_sheet}
               onChange={e=>{setFichaInfo({...fichaInfo, ds_sheet: e.target.value})}}

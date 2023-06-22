@@ -111,6 +111,7 @@ export default function CampaignCard({campanha, changeCampaignLayout}) {
             />
 
             <textarea cols="30" rows="10"
+            maxLength={70}
               style={{backgroundColor: '#FBF4FF', borderRadius: 5, width: '100%', height: 300, color: 'black', padding: 10, resize: 'none'}}
               value={campaignInfo.ds_campaign}
               onChange={e=>{setCampaignInfo({...campaignInfo, ds_campaign: e.target.value})}}
