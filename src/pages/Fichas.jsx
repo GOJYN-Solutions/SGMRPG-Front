@@ -19,6 +19,7 @@ export default function Fichas() {
       dsFicha: '',
       publico: false
     })
+
     const [filtro, setFiltro] = useState({
       nmFicha: '',
       nmTipo: '',

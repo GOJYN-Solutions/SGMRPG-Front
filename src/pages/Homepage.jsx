@@ -80,7 +80,7 @@ export default function Homepage() {
                 </div>
               </button>
             </div>
-            <div className="bg-[#AE43FF] h-full w-5/6 rounded-3xl">
+            <div className="bg-white bg-opacity-25 h-full w-5/6 rounded-3xl">
               <HomepageModal modal={modal}/>
             </div>
           </div>

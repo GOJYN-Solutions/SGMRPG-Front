@@ -39,7 +39,7 @@ export default function Profile() {
       <div className="h-full w-full bg-white flex flex-col">
         <div className="h-2/6 overflow-hidden flex bg-[url('https://ordemparanormal.com.br/wp-content/uploads/2021/09/TRSlNehdWzs-HD.jpg')] bg-cover">
           <div className="h-full w-full flex justify-end items-center pb-8 px-4">
-            <button className="bg-[#A52EFF] h-12 w-24 rounded-full"><div>Editar</div></button>
+            {/* <button className="bg-[#A52EFF] h-12 w-24 rounded-full"><div>Editar</div></button> */}
           </div>
         </div>
 
