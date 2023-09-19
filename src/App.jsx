@@ -7,7 +7,6 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar/>
         <Routes>
           <Route path="/login" element={<Login/>}></Route>
         </Routes>
