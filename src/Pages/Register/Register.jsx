@@ -1,137 +1,84 @@
 import { useState } from 'react';
-import { Checkbox, Typography, ThemeProvider } from "@material-tailwind/react";
-import { BsCheck } from 'react-icons/bs'
+import Checkboxs from '../../Components/Checkbox/Checkboxs';
+import { FiPlus } from 'react-icons/fi'
+import Input from '../../Components/Input/Input';
+import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 
+// setFriends(
+//     friends.map((friend) =>
+//         // Here you accept a id argument to the function and replace it with hard coded 🤪 2, to make it dynamic.
+//         friend.id === 2
+//             ? { ...friend, name: "Changed Name" }
+//             : { ...friend }
+//     )
 
 
 
 export default function Register() {
 
-    const theme = {
-        checkbox: {
-          defaultProps: {
-            color: "blue",
-            label: undefined,
-            icon: undefined,
-            ripple: true,
-            className: "",
-            disabled: false,
-            containerProps: undefined,
-            labelProps: undefined,
-            iconProps: undefined,
-          },
-          valid: {
-            colors: [
-              "blue-gray",
-              "gray",
-              "brown",
-              "deep-orange",
-              "orange",
-              "amber",
-              "yellow",
-              "lime",
-              "light-green",
-              "green",
-              "teal",
-              "cyan",
-              "light-blue",
-              "blue",
-              "indigo",
-              "deep-purple",
-              "purple",
-              "pink",
-              "red",
-            ],
-          },
-          styles: {
-            base: {
-              root: {
-                display: "inline-flex",
-                alignItems: "items-center",
-              },
-              container: {
-                position: "relative",
-                display: "flex",
-                alignItems: "items-center",
-                cursor: "cursor-pointer",
-                p: "p-3",
-                borderRadius: "rounded-full",
-              },
-              input: {
-                peer: "peer",
-                position: "relative",
-                appearance: "appearance-none",
-                width: "w-5",
-                height: "h-5",
-                borderWidth: "border",
-                borderRadius: "rounded-md",
-                borderColor: "border-blue-gray-200",
-                cursor: "cursor-pointer",
-                transition: "transition-all",
-                before: {
-                  content: "before:content['']",
-                  display: "before:block",
-                  bg: "before:bg-blue-gray-500",
-                  width: "before:w-12",
-                  height: "before:h-12",
-                  borderRadius: "before:rounded-full",
-                  position: "before:absolute",
-                  top: "before:top-2/4",
-                  left: "before:left-2/4",
-                  transform: "before:-translate-y-2/4 before:-translate-x-2/4",
-                  opacity: "before:opacity-0 hover:before:opacity-10",
-                  transition: "before:transition-opacity",
-                },
-              },
-              label: {
-                color: "text-gray-700",
-                fontWeight: "font-light",
-                userSelect: "select-none",
-                cursor: "cursor-pointer",
-                mt: "mt-px",
-              },
-              icon: {
-                color: "text-white",
-                position: "absolute",
-                top: "top-2/4",
-                left: "left-2/4",
-                translate: "-translate-y-2/4 -translate-x-2/4",
-                pointerEvents: "pointer-events-none",
-                opacity: "opacity-0 peer-checked:opacity-100",
-                transition: "transition-opacity",
-              },
-              disabled: {
-                opacity: "opacity-50",
-                pointerEvents: "pointer-events-none",
-              },
-            },
-          },
-        },
-      };
+    const [user, setUser] = useState({
+        nick: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
 
-    let checkboxStyle = {
-        className: 'h-7 w-7 text-base',
-        label: 'flex font-medium font-inter text-xl checked:bg-red-500 checked:border-amber-500 checked:before:bg-amber-500',
-        color: 'white'
-    }
-
-    const [items, setItems] = useState(['item 1', 'item 2']);
-    function addItem() {
-      const newItem = 'item 3';
-      const newItems = [...items, newItem];
-      setItems(newItems);
-    }
-
+        choices: [{
+        }, {
+            checked: false,
+            label: 'Dungeons & Dragons'
+        }, {
+            checked: false,
+            label: 'Tormenta'
+        }, {
+            checked: false,
+            label: 'Ordem Paranormal'
+        }, {
+            checked: false,
+            label: 'Personalizado'
+        },{
+            checked: false,
+            label: 'Dungeons & Dragons'
+        }]
+    })
 
   return (
-    <div className="h-screen px-40 py-20 rounded gap-5 bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-row ">
-        <div className='w-full h-full flex'>
-            <div className='h-full w-1/2 bg-white rounded-l-3xl'>
-                        <div>
-                <button onClick={addItem}>Adicionar item</button>
-                <ul>
-                    {items.map(item => <li key={item}>{item}</li>)}
-                </ul>
+    <div className="h-screen w-screen px-40 py-20 rounded bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-row ">
+    
+            <div className='h-full w-1/2 p-5 flex flex-col justify-center items-center bg-white rounded-l-3xl'>
+                <div className='flex flex-col gap-5'>
+                    <div className='flex justify-center'>
+                      <p className='font-nonito text-[5vh]'>CADASTRE-SE</p>
+                    </div>
+                    <div className=''>
+                        <div className='flex items-center gap-10'>
+                            <div>
+                                <button className='w-32 h-32 rounded-full flex  items-center justify-center'>
+                                    <FiPlus className='w-full h-full p-5' color='white'/>
+                                </button>
+                            </div>
+                            <Input className={"w-full"} value={user.nick} placeholder="Nickname/User" 
+                                onChange={e => setUser({...user, nick: e.target.value})}/>
+                        </div>
+                    </div>
+                    <Input className={"w-full"} value={user.email} placeholder="Email" 
+                                onChange={e => setUser({...user, email: e.target.value})}/>
+                    <div className='flex gap-5'>
+                        <Input type='password' className={"w-full"} value={user.password} placeholder="Senha" 
+                            onChange={e => setUser({...user, password: e.target.value})}/>
+                        <Input type='password' className={"w-full"} value={user.confirmPassword} placeholder="Confirme a senha" 
+                            onChange={e => setUser({...user, confirmPassword: e.target.value})}/>
+                    </div>
+
+                    <Input type='password' className={"w-full"} value={user.password} placeholder="Senha" 
+                            onChange={e => setUser({...user, password: e.target.value})}/>
+                    <Input type='password' className={"w-full"} value={user.confirmPassword} placeholder="Confirme a senha" 
+                            onChange={e => setUser({...user, confirmPassword: e.target.value})}/>
+                            
+                    <Checkboxs checked={false} label={"Termo de Uso"} labelStyle={'text-[#CBCBCB]'}/>
+                    
+                    <div className='flex justify-center '>
+                      <ButtonForm className={'bg-[#313F96]'} onClick={e=>alert(JSON.stringify(user))} text={'CADASTRAR'}/>
+                    </div>
                 </div>
             </div>
  
@@ -143,92 +90,17 @@ export default function Register() {
                     <div className='h-full w-full items-center flex flex-col justify-center'>  
                         <div className='text-3xl'>
                             <div>
-                                <ThemeProvider value={theme}>
-                                    <Checkbox
-                                        defaultChecked
-                                        ripple={false}
-                                        className={checkboxStyle.className}
-                                        color={checkboxStyle.color}
-                                        label={
-                                            <Typography color="white" className={checkboxStyle.label}>
-                                            Dungeons & Dragons
-                                            </Typography>
-                                        }
-                                        icon={
-                                            <BsCheck className='p-1'/>
-                                        }
-                                    />
-                                </ThemeProvider>
-                            </div>
-                            <div>
-                                <Checkbox
-                                    defaultChecked
-                                    ripple={false}
-                                    className={checkboxStyle.className}
-                                    color={checkboxStyle.color}
-                                    label={
-                                        <Typography color="white" className={checkboxStyle.label}>
-                                        Tormenta
-                                        </Typography>
-                                    }
-                                     icon={
-                                        <BsCheck className='p-1'/>
-                                    }
-                                />
-                            </div>
-                            <div>
-                                <Checkbox
-                                    defaultChecked
-                                    ripple={false}
-                                    className={checkboxStyle.className}
-                                    color={checkboxStyle.color}
-                                    label={
-                                        <Typography color="white" className={checkboxStyle.label}>
-                                        Ordem Paranormal
-                                        </Typography>
-                                    }
-                                     icon={
-                                        <BsCheck className='p-1'/>
-                                    }
-                                />
-                            </div>
-                            <div>
-                                <Checkbox
-                                    defaultChecked
-                                    ripple={false}
-                                    className={checkboxStyle.className}
-                                    color={checkboxStyle.color}
-                                    label={
-                                        <Typography color="white" className={checkboxStyle.label}>
-                                        Personalizado
-                                        </Typography>
-                                    }
-                                     icon={
-                                        <BsCheck className='p-1'/>
-                                    }
-                                />
-                            </div>
-                            <div>
-                                <Checkbox
-                                    defaultChecked
-                                    ripple={false}
-                                    className={checkboxStyle.className}
-                                    color={checkboxStyle.color}
-                                    label={
-                                        <Typography color="white" className={checkboxStyle.label}>
-                                        Dungeons & Dragons
-                                        </Typography>
-                                    }
-                                     icon={
-                                        <BsCheck className='p-1'/>
-                                    }
-                                />
+                                {
+                                    user.choices.map(choice =>(
+                                        <Checkboxs checked={choice.checked} label={choice.label}/>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+       
     </div>
   );
 }

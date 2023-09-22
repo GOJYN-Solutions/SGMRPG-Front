@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
 import ReactTyped from "react-typed";
+import Input from '../../Components/Input/Input';
+import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 
 export default function Login() {
 
@@ -10,7 +12,6 @@ export default function Login() {
     password: ''
   })
 
-  let inputs = '2xl:h-12 2xl:text-lg xl:text-base xl:h-8 px-5 font-nonito  placeholder-[#CBCBCB] rounded-full bg-[#F8F8F8]'
   let typeText = '2xl:text-5xl xl:text-4xl text-white font-nonito'
 
 
@@ -49,10 +50,10 @@ export default function Login() {
         <div className="flex flex-col gap-10">
           <p className="2xl:text-5xl xl:text-4xl font-nonito">LOGIN</p>
           <div className="gap-5 flex flex-col">
-            <input type="text" className={inputs} value={user.login} placeholder="Email ou User" 
-              onChange={e => setUser({...user, login: e.target.value})} required/>
-            <input type="password" className={inputs} value={user.password} placeholder="Senha" 
-              onChange={e => setUser({...user, password: e.target.value})} required/>
+              <Input value={user.login} placeholder="Email ou User" 
+              onChange={e => setUser({...user, login: e.target.value})}/>
+              <Input type="password" value={user.password} placeholder="Senha" 
+              onChange={e => setUser({...user, password: e.target.value})} />
           </div>
           <div className="px-2 gap-20 flex justify-between">
             <Link className='className="2xl:text-sm xl:text-xs font-nonito underline text-[#7A08DB]' to='/password'>Esqueceu a senha?</Link>
@@ -60,9 +61,7 @@ export default function Login() {
             
           </div>
           <div className="flex items-center justify-center">
-            <button className="2xl:my-5 2xl:text-2xl xl:text-xl 2xl:p-5 xl:p-3 w-72 bg-[#7A08DB] text-white rounded-3xl font-nonito" onClick={e=>alert(`Login:${user.login} password:${user.password}`)}>
-              ENTRAR
-            </button>
+            <ButtonForm className={'bg-[#7A08DB]'} onClick={e=>alert(`Login:${user.login} password:${user.password}`)} text={'ENTRAR'}/>
           </div>
         </div>
         <button className="flex items-center p-3 gap-2 border border-black rounded-3xl font-inter text-sm">
