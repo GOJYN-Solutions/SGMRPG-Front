@@ -1,8 +1,10 @@
-import { Checkbox, Typography } from "@material-tailwind/react";
+import Checkbox from '@mui/material/Checkbox';
+import { common } from '@mui/material/colors';
 import { BsCheck } from 'react-icons/bs'
 
 
-export default function Checkboxs({label, labelStyle}) {
+
+export default function Checkboxs({label, labelStyle, checked}) {
 
     console.log(label)
     
@@ -14,21 +16,34 @@ export default function Checkboxs({label, labelStyle}) {
 
 
     if(label) return (
-        <div>
-            <Checkbox
-                onChange={e=>console.log(e.target.labels[1].textContent)}
-                ripple={false}
-                className={checkboxStyle.className}
-                color="white"
-                label={
-                    <Typography color="white" className={checkboxStyle.label}>
-                        {label}
-                    </Typography>
-                }
-                icon={
-                    <BsCheck className='p-1'/>
-                }
-            />
+        <div className='flex items-center'>
+            <div>
+                <Checkbox
+                    sx={{ 
+                        '& .MuiSvgIcon-root': { fontSize: 30 }, 
+                        color: common['white'],
+                        '&.Mui-checked': {
+                            color: common['white'],
+                        }                   
+                    }}
+                    checked={checked}
+                />
+            </div>
+            <p className={checkboxStyle.label}>{label}</p>
         </div>
     );
   }
+//   <Checkbox
+//   onChange={e=>console.log(e.target.labels[1].textContent)}
+//   ripple={false}
+//   className={checkboxStyle.className}
+//   color="white"
+//   label={
+//       <Typography color="white" className={checkboxStyle.label}>
+//           {label}
+//       </Typography>
+//   }
+//   icon={
+//       <BsCheck className='p-1'/>
+//   }
+// />

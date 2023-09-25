@@ -4,6 +4,7 @@ import NavBar from "./Components/Navbar/Navbar";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 
+
 export default function App() {
   return (
     <>
