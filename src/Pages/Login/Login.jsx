@@ -16,7 +16,7 @@ export default function Login() {
 
 
   return (
-    <div className="h-screen text-4xl px-40 py-20 gap-5 items-center bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-row ">
+    <div className="h-screen px-40 py-20 gap-5 items-center bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-row ">
       <div className="w-1/2 h-full flex items-center justify-center">
         <div className="gap-20 flex flex-col  justify-center">
           <div className='flex flex-col gap-6 '>
@@ -51,12 +51,12 @@ export default function Login() {
           <p className="2xl:text-5xl xl:text-4xl font-nonito">LOGIN</p>
           <div className="gap-5 flex flex-col">
               <Input value={user.login} placeholder="Email ou User" 
-              onChange={e => setUser({...user, login: e.target.value})}/>
+                  onChange={e => setUser({...user, login: e.target.value})}/>
               <Input type="password" value={user.password} placeholder="Senha" 
               onChange={e => setUser({...user, password: e.target.value})} />
           </div>
           <div className="px-2 gap-20 flex justify-between">
-            <Link className='className="2xl:text-sm xl:text-xs font-nonito underline text-[#7A08DB]' to='/password'>Esqueceu a senha?</Link>
+            <Link className='className="2xl:text-sm xl:text-xs font-nonito underline text-[#7A08DB]' to='/forgotpassword'>Esqueceu a senha?</Link>
             <p className="2xl:text-sm xl:text-xs font-nonito">Não possui uma conta? <Link className='text-[#7A08DB] underline font-normal' to='/register'>CADASTRE-SE</Link></p>
             
           </div>

@@ -46,10 +46,6 @@ export default function Register() {
 
   return (
     <>
-        {/* <div className='w-screen h-screen bg-black absolute'>
-            <div className='h-full w-full bg-blue-gray-500'>
-            </div>
-        </div> */}
         <div className="h-screen w-screen px-40 py-20 rounded bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-row ">
 
             <div className='h-full w-1/2 justify-center flex flex-col bg-white rounded-l-3xl'>
@@ -59,9 +55,9 @@ export default function Register() {
                     </div>
                     <div className='h-full flex flex-col gap-5'>
                         <div className=''>
-                            <div className='flex items-center gap-10'>
-                                <div>
-                                    <button className='w-24 h-24 bg-[#F8F8F8] rounded-full flex  items-center justify-center'>
+                            <div className='flex items-center gap-5'>
+                                <div className='p-[1px] bg-gradient-to-b from-[#7F04DF] to-[#313F96] rounded-full'>
+                                    <button className='w-36 h-36 border-2 bg-[#F8F8F8] rounded-full flex  items-center justify-center'>
                                         <FiPlus className='w-full h-full p-5' color='#E7E7E7'/>
                                     </button>
                                 </div>

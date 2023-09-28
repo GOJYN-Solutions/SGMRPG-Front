@@ -17,7 +17,7 @@ export default function Checkboxs({label, labelStyle, checked}) {
 
     if(label) return (
         <div className='flex items-center'>
-            <div>
+            <div className=''>
                 <Checkbox
                     sx={{ 
                         '& .MuiSvgIcon-root': { fontSize: 30 }, 
