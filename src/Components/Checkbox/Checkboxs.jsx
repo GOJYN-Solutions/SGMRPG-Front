@@ -1,6 +1,7 @@
-import Checkbox from '@mui/material/Checkbox';
 import { common } from '@mui/material/colors';
 import { BsCheck } from 'react-icons/bs'
+import { ChakraProvider } from '@chakra-ui/react'
+import { Checkbox} from '@chakra-ui/react'
 
 
 
@@ -18,18 +19,9 @@ export default function Checkboxs({label, labelStyle, checked}) {
     if(label) return (
         <div className='flex items-center'>
             <div className=''>
-                <Checkbox
-                    sx={{ 
-                        '& .MuiSvgIcon-root': { fontSize: 30 }, 
-                        color: common['white'],
-                        '&.Mui-checked': {
-                            color: common['white'],
-                        }                   
-                    }}
-                    checked={checked}
-                />
+                <ChakraProvider><Checkbox size='lg' className={checkboxStyle.label} spacing={5}>{label}</Checkbox></ChakraProvider>
             </div>
-            <p className={checkboxStyle.label}>{label}</p>
+            <p className={checkboxStyle.label}></p>
         </div>
     );
   }
