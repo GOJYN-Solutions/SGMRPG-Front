@@ -61,7 +61,7 @@ export default function Login() {
             
           </div>
           <div className="flex items-center justify-center">
-            <ButtonForm className={'bg-[#7A08DB]'} onClick={e=>alert(`Login:${user.login} password:${user.password}`)} text={'ENTRAR'}/>
+            <ButtonForm className={'bg-[#7A08DB] text-white'} onClick={e=>alert(`Login:${user.login} password:${user.password}`)} text={'ENTRAR'}/>
           </div>
         </div>
         <button className="flex items-center p-3 gap-2 border border-black rounded-3xl font-inter text-sm">

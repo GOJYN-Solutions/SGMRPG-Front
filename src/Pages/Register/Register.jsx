@@ -58,10 +58,10 @@ export default function Register() {
             <div className='flex flex-row '>            
                 <div className='w-1/2 p-10 justify-center flex flex-col bg-white rounded-l-xl'>
                     <div className='flex gap-16 p-10 flex-col justify-between '>
-                        <div className='h-1/6 flex justify-center'>
+                        <div className='h-1/6 flex justify-center '>
                             <p className='2xl:text-4xl xl:text-3xl font-nonito'>CADASTRE-SE</p>
                         </div>
-                        <div className='h-full flex flex-col gap-10'>
+                        <div className='h-full flex flex-col gap-10 '>
                             <div className='flex flex-col gap-5'>
                                 <div className=''>
                                     <div className='flex items-center gap-5'>
@@ -104,13 +104,13 @@ export default function Register() {
                                 </div>
                             </div>
                             <div className='flex justify-center '>
-                                <ButtonForm className={'bg-[#313F96]'} onClick={e=>alert(JSON.stringify(user))} text={'CADASTRAR'}/>
+                                <ButtonForm className={'bg-[#313F96] text-white'} onClick={e=>alert(JSON.stringify(user))} text={'CADASTRAR'}/>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className='w-1/2 p-10 justify-center flex flex-col bg-[#313F96] rounded-r-xl'>
+                <div className='w-1/2 p-10 justify-center flex flex-col bg-gradient-to-t from-[#7F04DF] to-[#313F96] rounded-r-xl'>
                     <div className='flex w-full h-full p-10 flex-col justify-between'>
                         
                             <p className='text-end 2xl:text-4xl xl:text-3xl font-nonito leading-tight text-white'>ESCOLHA SEUS <br/> PRINCIPAIS <br/> INTERESSES...</p>
