@@ -3,17 +3,13 @@ import Input from '../../Components/Input/Input';
 import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 import Checkbox from '../../Components/Checkbox/Checkbox';
 import { Roll10, Roll7, Roll8, Roll9 } from '../../Components/Icons/Rolls';
-
-
-
-// setFriends(
-//     friends.map((friend) =>
-//         // Here you accept a id argument to the function and replace it with hard coded 🤪 2, to make it dynamic.
-//         friend.id === 2
-//             ? { ...friend, name: "Changed Name" }
-//             : { ...friend }
-//     )
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ru from 'date-fns/locale/ru';
+import ReactDatePicker,{registerLocale} from 'react-datepicker';
+import ptBR from 'date-fns/locale/pt-BR';
+import { CalendarContainer } from 'react-datepicker';
+registerLocale('ptBR', ptBR);
 
 
 export default function Register() {
@@ -85,9 +81,8 @@ export default function Register() {
                                             onChange={e => setUser({...user, password: e.target.value})}/>
                                         <Input type='password' classNameDiv={"w-[17.59vh]"} value={user.confirmPassword} placeholder="Confirme a senha" 
                                             onChange={e => setUser({...user, confirmPassword: e.target.value})}/>
-                                    </div>
+                                    </div>                                    
 
-                                    <input id="meu-elemento" onClick={e=>alert(2)} type="date" ref={dateInput} name="" id="" />
                                     <div onClick={e=>console.log(dateInput.current)}><Input type='text' classNameDiv={"w-[37.22vh]"} value={user.birth} placeholder="Data de Nascimento" 
                                            onChange={e => setUser({...user, birth: e.target.value})}/></div>
                                     <div className='flex flex-col gap-[1vh]'>
@@ -190,7 +185,17 @@ export default function Register() {
                         <Roll10/>
                     </div>
                 </div>    
-            </div>       
+            </div> 
+            <div className='absolute flex items-center justify-center h-full bg- w-full z-20'>
+                <ReactDatePicker
+                    
+                    selected={user.birth}
+                    onChange={date => setUser({...user, birth:date})}
+                    name='date'
+                    inline
+                    locale="ptBR"
+                />
+            </div>      
         </div>
     </>
   );
