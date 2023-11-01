@@ -4,6 +4,8 @@ import NavBar from "./Components/Navbar/Navbar";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword"
+import ChangePassword from "./Pages/ChangePassword/ChangePassword"
+import LandingPage from "./Pages/LandingPage/LandingPage"
 
 
 export default function App() {
@@ -14,6 +16,8 @@ export default function App() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword/>}></Route>
+          <Route path="/changepassword" element={<ChangePassword/>}></Route>
+          <Route path="/*" element={<LandingPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

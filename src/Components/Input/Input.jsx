@@ -1,14 +1,25 @@
-export default function Input({className, classNameDiv, onChange, value, placeholder, type}){
+export default function Input({className, classNameDiv, onChange, value, placeholder, type, optional}){
 
-    let inputs = '2xl:h-10 2xl:text-lg txl:h-10 xl:text-base w-full px-10 font-nonito placeholder-[#CBCBCB] rounded-3xl bg-[#F8F8F8]'
+    let inputs = 'h-[4.27vh] w-full bg-white pl-[2.85vh] text-[1.65vh] font-nonito placeholder-[#989FCA] rounded-[1.85vh] text-start bg-[#F8F8F8]'
 
     return(
-        <div className={`p-0.5 rounded-3xl bg-gradient-to-b from-[#7F04DF] to-[#313F96] ${classNameDiv ? classNameDiv : 'w-full'} `}>
-            <input 
-                type={type ? type : 'text'} 
-                className={`${inputs} ${className}`} 
-                value={value} placeholder={placeholder}
-                onChange={onChange} required/>
-        </div>
+        <>
+            <div className={classNameDiv}>
+                <input 
+                    
+                    type={type ? type : 'text'} 
+                    className={`${inputs} ${className} ${classNameDiv} before border-[0.1vh] border-[#7A08DB]`} 
+                    value={value} placeholder={placeholder}
+                    onChange={onChange} required>
+                        
+                </input>
+            </div>
+            {(optional && value=='') && (
+                <div className={`text-[#FF8080] absolute mx-[8.5vh] my-[0.9vh] text-[1.65vh]`}>
+                   *
+                </div>
+            )}
+                    
+        </>
     )
 }

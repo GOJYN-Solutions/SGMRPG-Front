@@ -8,6 +8,9 @@ module.exports = withMT({
       colors: {
         white: '#ffffff', // Defina a cor branca com o código da cor desejado
       },
+      backgroundImage:{
+        'checked': "url('/icons/check.svg)"
+      }
     },
     fontFamily: {
       nonito: ['Fjalla One'],
