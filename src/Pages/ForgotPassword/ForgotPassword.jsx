@@ -2,6 +2,7 @@ import { useState, useRef} from 'react';
 import Input from '../../Components/Input/Input';
 import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 import phonelib from 'phonelib'
+import NavBar from '../../Components/Navbar/Navbar';
 
 
 
@@ -52,19 +53,19 @@ export default function Register() {
 
     const onFocusInput = () => {
         console.log(code.length)
-        if(code.length == 4) setCode('')
+        if(code.length >= 4) setCode('')
     }
 
     const switchModal = () => {
         switch (modal) {
             case 'email':
                 return(
-                    <div className='h-full gap-10 flex flex-col items-center justify-center'>
-                        <p className='text-5xl font-nonito'>ESQUECEU A SENHA?</p>
-                        <p className='text-xl text-center'>Enviamos um e-mail a sua caixa de <br/> entrada para a redefinição de senha.</p>
-                        <div className='flex gap-5'>
+                    <div className='h-full my-[8vh] mx-[13vh] gap-[4vh] flex flex-col items-center justify-center'>
+                        <p className='text-[3.70vh] font-nonito'>ESQUECEU A SENHA?</p>
+                        <p className='text-[1.85vh] text-center'>Enviamos um e-mail a sua caixa de <br/> entrada para a redefinição de senha.</p>
+                        <div className='flex gap-[1.85vh]'>
                             <ButtonForm className={'bg-[#7A08DB] text-white'} onClick={e=>submitInput()} text={'Reenviar Email'}/>
-                            <ButtonForm className={'bg-white border-[#7A08DB]  border-2 text-[#7A08DB]'} onClick={e=>submitInput()} text={'Voltar para Login'}/>
+                            <ButtonForm className={'bg-white border-[#7A08DB]  border-[0.10vh] text-[#7A08DB]'} onClick={e=>submitInput()} text={'Voltar para Login'}/>
                         </div>
                     </div> 
                 )
@@ -72,7 +73,7 @@ export default function Register() {
 
             case 'tel':
                 return(
-                    <div className='h-full gap-10 flex flex-col items-center justify-center'>
+                    <div className='h-full my-[8vh] mx-[13vh] gap-[4vh] flex flex-col items-center justify-center'>
                         <p className='text-[3.70vh] font-nonito'>ESQUECEU A SENHA?</p>
                         <p className='text-[1.85vh] text-center'>Enviamos um código via SMS para o seu telefone. <br/> Por favor, confirme o código abaixo:</p>
                         <div className='flex items-center gap-[1.48vh]'>
@@ -99,10 +100,10 @@ export default function Register() {
         
             default:
                 return(
-                    <div className='h-full gap-10 flex flex-col items-center justify-center'>
-                        <p className='text-5xl font-nonito'>ESQUECEU A SENHA?</p>
-                        <p className=''>Insira seu e-mail ou telefone cadastrado(s).</p>
-                        <Input className={"pr-40"} classNameDiv={" "} value={input} placeholder="Email ou Telefone" 
+                    <div className='h-full my-[8vh] mx-[20vh] gap-[4vh] flex flex-col items-center justify-center'>
+                        <p className='text-[4.44vh] font-nonito'>ESQUECEU A SENHA?</p>
+                        <p className='text-[1.8vh]'>Insira seu e-mail ou telefone cadastrado(s).</p>
+                        <Input classNameDiv={"w-[37.22vh]"}  value={input} placeholder="Email ou Telefone" 
                                                     onChange={e => setInput(e.target.value)}/>
                         <ButtonForm className={'bg-[#7A08DB] text-white'} onClick={e=>submitInput()} text={'ENVIAR'}/>
                     </div> 
@@ -112,14 +113,13 @@ export default function Register() {
     }
 
   return (
-    <>      
-        <div className="h-screen w-screen flex items-center justify-center px-40 py-20 rounded bg-gradient-to-b from-[#7F04DF] to-[#313F96] ">
-            
-            <div className='w-1/2 py-16 bg-white rounded-2xl'>
-                
+    <div className='h-screen overflow-hidden'>      
+        <NavBar/>
+        <div className="h-full w-screen flex items-center justify-center bg-gradient-to-b from-[#7F04DF] to-[#313F96] ">
+            <div className='bg-white rounded-[1.48vh]'>                
                     {switchModal()}
             </div>
         </div>
-    </>
+    </div>
   );
 }

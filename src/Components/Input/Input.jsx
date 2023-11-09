@@ -8,7 +8,7 @@ export default function Input({className, classNameDiv, onChange, value, placeho
                 <input 
                     
                     type={type ? type : 'text'} 
-                    className={`${inputs} ${className} ${classNameDiv} before border-[0.1vh] border-[#7A08DB]`} 
+                    className={`${inputs} ${className} ${classNameDiv} border-[0.1vh] border-[#7A08DB]`} 
                     value={value} placeholder={placeholder}
                     onChange={onChange} required>
                         

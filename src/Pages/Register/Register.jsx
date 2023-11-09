@@ -3,13 +3,10 @@ import Input from '../../Components/Input/Input';
 import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 import Checkbox from '../../Components/Checkbox/Checkbox';
 import { Roll10, Roll7, Roll8, Roll9 } from '../../Components/Icons/Rolls';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import ru from 'date-fns/locale/ru';
-import ReactDatePicker,{registerLocale} from 'react-datepicker';
-import ptBR from 'date-fns/locale/pt-BR';
-import { CalendarContainer } from 'react-datepicker';
-registerLocale('ptBR', ptBR);
+import Datepicker from "react-tailwindcss-datepicker"; 
+import phonelib from 'phonelib'
+import { Link } from 'react-router-dom';
+import NavBar from '../../Components/Navbar/Navbar';
 
 
 export default function Register() {
@@ -24,6 +21,7 @@ export default function Register() {
         terms: false,
         choices: []
     })
+
 
     const [choice1, setChoise1] = useState({
         checked: false,
@@ -55,13 +53,32 @@ export default function Register() {
         console.log(user.tel.length, "tel")
         if (!isNaN(value) && user.tel.length < 11 || value.length < user.tel.length) setUser({...user, tel: value})
     }
+
+    const submitForm = () => {
+        let erros = []
+
+        var phoneNumber = {
+            phone: user.tel,
+            country: 'BR'
+        }
+        
+        phonelib.isValid(phoneNumber, function(err, result){
+            console.log(result.isValid)
+            if (!result.isValid) erros.push("tell errado hein!")
+        });
+
+        if (user.password != user.confirmPassword) erros.push("Senha tem q ser igual AAAAAAAA")
+        
+        if (erros.length > 0) alert(erros) 
+    }
     
 
   return (
-    <>
-        <div className="h-screen w-screen rounded bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex items-center justify-center">            
+    <div className='overflow-hidden h-screen'>
+        <NavBar/> 
+        <div className="h-full w-screen rounded bg-gradient-to-b from-[#7F04DF] to-[#313F96] flex flex-col items-center justify-center">            
             <div className='w-[114.72vh] flex flex-row '>            
-                <div className='w-1/2 p-[3.70vh] justify-center flex flex-col bg-white rounded-l-[1.11vh] z-10'>
+                <div className='w-1/2 p-[3.70vh] justify-center flex flex-col bg-white rounded-l-[1.11vh] z-20'>
                     <div className='flex gap-[5.92vh] p-[3.70vh] flex-col justify-between '>
                         <div className='h-1/6 flex justify-center '>
                             <p className='text-[3.80vh] font-nonito'>CADASTRE-SE</p>
@@ -74,7 +91,6 @@ export default function Register() {
 
                                     <Input classNameDiv={"w-[37.22vh]"} value={user.email} placeholder="Email" 
                                                 onChange={e => setUser({...user, email: e.target.value})}/>
-                                
                                             
                                     <div className='flex gap-[1.85vh]'>
                                         <Input type='password' classNameDiv={"w-[17.59vh]"} value={user.password} placeholder="Senha" 
@@ -82,10 +98,18 @@ export default function Register() {
                                         <Input type='password' classNameDiv={"w-[17.59vh]"} value={user.confirmPassword} placeholder="Confirme a senha" 
                                             onChange={e => setUser({...user, confirmPassword: e.target.value})}/>
                                     </div>                                    
-
-                                    <div onClick={e=>console.log(dateInput.current)}><Input type='text' classNameDiv={"w-[37.22vh]"} value={user.birth} placeholder="Data de Nascimento" 
-                                           onChange={e => setUser({...user, birth: e.target.value})}/></div>
-                                    <div className='flex flex-col gap-[1vh]'>
+                                    <Datepicker 
+                                        inputClassName="w-[37.22vh] h-[4.27vh] w-full bg-white pl-[2.85vh] text-[1.65vh] font-nonito placeholder-[#989FCA] rounded-[1.85vh] text-start bg-[#F8F8F8] border-[0.1vh] border-[#7A08DB]"
+                                        useRange={false} 
+                                        asSingle={true} 
+                                        value={user.birth} 
+                                        onChange={e => setUser({...user, birth: e})}
+                                        displayFormat={"DD/MM/YYYY"}
+                                        placeholder='Data de Nascimento'
+                                        popoverDirection="top" 
+                                    
+                                    /> 
+                                    <div className='flex flex-col gap-[1vh] z-0 '>
                                         <Input type="text" classNameDiv={"w-[37.22vh]"} value={user.tel} placeholder="Telefone"  
                                         onChange={e => isTel(e.target.value)} optional={true}/>
                                         
@@ -108,7 +132,7 @@ export default function Register() {
                                     
                             </div>
                             <div className='flex justify-center '>
-                                <ButtonForm className={'bg-[#313F96] text-white'} onClick={e=>alert(JSON.stringify(user))} text={'CADASTRAR'}/>
+                                <ButtonForm className={'bg-[#313F96] text-white'} onClick={e=>submitForm(user)} text={'CADASTRAR'}/>
                             </div>
                         </div>
                     </div>
@@ -185,18 +209,8 @@ export default function Register() {
                         <Roll10/>
                     </div>
                 </div>    
-            </div> 
-            <div className='absolute flex items-center justify-center h-full bg- w-full z-20'>
-                <ReactDatePicker
-                    
-                    selected={user.birth}
-                    onChange={date => setUser({...user, birth:date})}
-                    name='date'
-                    inline
-                    locale="ptBR"
-                />
-            </div>      
+            </div>     
         </div>
-    </>
+    </div>
   );
 }
