@@ -1,52 +1,37 @@
 import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {Roll1, Roll2, Roll3, Roll4, Roll5, Roll6} from '../../Components/Icons/Rolls';
+import NavBar from '../../Components/Navbar/Navbar';
 
 export default function LandingPage() {
     const [password, setPassword] = useState('')
     const [confirmpassword, setConfirmPassword] = useState('')
 
-  //   const [animation, setAnimation] = useState("w-[93vh]")
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       const a = "w-[" + String(99) + "vh]";
-  //       setAnimation(a);
-  //     }, 2000);
-  
-  //     return () => {
-  //       clearInterval(interval);
-  //     };
-  //   }, [animation]);
-  
-  // console.log(animation)
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev < 100 ? prev + 10 : 100));
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   return (
     <div className=''>     
       <div className="">
-          <div className='flex justify-between items-center px-[3.70vh] h-[5.74vh] w-full'>
-            <div className='flex gap-[0.74vh] text-[1.85vh]'>
-              <div className='w-[3.24vh] h-[2.96vh] bg-[#7D06DD] rounded-full'></div>
-              <p className='flex items-center font-nonito text-[#7E05DE]'>Runesys</p>
-            </div>
-            <div className='flex gap-[0.74vh] text-[1.85vh]'>
-              <Link className=' ' to='/register'>
-                <div className='flex items-center justify-center rounded-[0.92vh] w-[12.83vh] h-[4.01vh] bg-white border-[#7D06DD] border-[0.3vh]'>
-                  <p className='font-bold text-[1.26vh] text-[#7D06DD] '>CADASTRE-SE</p>
-                </div>
-              </Link>
-              <Link className=' ' to='/login'>
-                <div className='flex items-center justify-center rounded-[0.92vh] w-[10.95vh] h-[4.01vh] bg-[#7D06DD]'>
-                  <p className='font-bold text-[1.26vh] text-white '>ENTRAR</p>
-                </div>
-              </Link>
-            </div>              
-          </div>        
+          <NavBar buttons={true}/>      
           <div className='flex bg-blue-[#E0DCDC] h-[82vh]'>
             <div className='w-1/2 h-full  flex items-center justify-center'>
-              <div className='flex flex-col gap-[1.85vh] pr-[8.5vh]'>
-                <div className={`absolute h-[4.89vh] bg-[#CB9BF1] mt-[18.5vh] z-0 transition-all duration-700 
-                ease-linear `}></div>
-
+              <div className='flex flex-col gap-[1.85vh] pr-[8.5vh]'>                
+                <div className={`w-[23vh] h-[4.8917vh] absolute mt-[18.5vh]`}>
+                  <div
+                    className="h-full bg-[#CB9BF1] rounded ease-in duration-100"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+                
                 <p className='font-nonito tracking-tight text-[5.55vh] l text-[#313F96] z-10'>
                   O <b className='font-normal text-[#7D06DD] '>sistema</b> para quem deseja <br/> se divertir livre dos <br/> problemas.
                   </p>

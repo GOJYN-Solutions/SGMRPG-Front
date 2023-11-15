@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NavBar({buttons}) {
+export default function NavBar({buttons, navbarLogada}) {
     return (
       <div className='flex justify-between items-center px-[3.70vh] h-[5.74vh] w-full'>
             <Link className=' ' to='/'>
@@ -20,7 +20,20 @@ export default function NavBar({buttons}) {
                   <p className='font-bold text-[1.26vh] text-white '>ENTRAR</p>
                 </div>
               </Link>
-            </div>}              
+            </div>}
+            { navbarLogada && <>
+              <div className="flex gap-[7vh]">
+                <Link className="" to='/modelos'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Modelos</p></Link>
+                <Link className="" to='/campanhas'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Campanhas</p></Link>
+                <Link className="" to='/fichas'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Fichas</p></Link>
+              
+              
+              </div>
+              <div className="flex">
+                <div className="w-[4.35vh] h-[4.35vh] rounded-full bg-[#D9D9D9]"></div>
+              </div>
+              </>}          
+                
         </div>   
     );
   }

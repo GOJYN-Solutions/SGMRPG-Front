@@ -6,6 +6,7 @@ import Register from "./Pages/Register/Register";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword"
 import ChangePassword from "./Pages/ChangePassword/ChangePassword"
 import LandingPage from "./Pages/LandingPage/LandingPage"
+import HomePage from "./Pages/HomePage/HomePage";
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword/>}></Route>
           <Route path="/changepassword" element={<ChangePassword/>}></Route>
+          <Route path="/home" element={<HomePage/>}></Route>
           <Route path="/*" element={<LandingPage/>}></Route>
         </Routes>
       </BrowserRouter>
