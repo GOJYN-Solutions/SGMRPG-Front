@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar({buttons, navbarLogada}) {
     return (
-      <div className='flex justify-between items-center px-[3.70vh] h-[5.74vh] w-full'>
+      <div className='flex justify-between items-center pl-[5vh] pr-[4vh] h-[5.74vh] w-full'>
             <Link className=' ' to='/'>
                 <div className='flex gap-[0.74vh] text-[1.85vh]'>
                   <div className='w-[3.24vh] h-[2.96vh] bg-[#7D06DD] rounded-full'></div>
@@ -22,10 +22,11 @@ export default function NavBar({buttons, navbarLogada}) {
               </Link>
             </div>}
             { navbarLogada && <>
-              <div className="flex gap-[7vh]">
-                <Link className="" to='/modelos'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Modelos</p></Link>
-                <Link className="" to='/campanhas'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Campanhas</p></Link>
-                <Link className="" to='/fichas'><p className="font-inter font-[900] text-[#7D06DD] text-[1.6vh]">Fichas</p></Link>
+              <div className="flex w-[55vh] gap-[4vh] ">
+                <Link className="" to='/guia'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Guia de Usuário</p></Link>
+                <Link className="" to='/modelos'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Modelos</p></Link>
+                <Link className="" to='/campanhas'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Campanhas</p></Link>
+                <Link className="" to='/fichas'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Fichas</p></Link>
               
               
               </div>

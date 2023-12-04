@@ -7,9 +7,12 @@ import Datepicker from "react-tailwindcss-datepicker";
 import phonelib from 'phonelib'
 import { Link } from 'react-router-dom';
 import NavBar from '../../Components/Navbar/Navbar';
+import axios from 'axios';
 
 
 export default function Register() {
+
+    const [errors, setErrors] = useState([])
 
     const [user, setUser] = useState({
         nick: '',
@@ -48,30 +51,53 @@ export default function Register() {
 
     const dateInput = useRef(null)
 
-    const isTel = (value) => {
-        console.log(value.length < user.tel.length, "<value")
-        console.log(user.tel.length, "tel")
+    const isTel = (value) => {       
         if (!isNaN(value) && user.tel.length < 11 || value.length < user.tel.length) setUser({...user, tel: value})
     }
+    console.log(errors)
 
     const submitForm = () => {
+        setErrors([])
         let erros = []
-
+        var validacao = /\S+@\S+\.\S+/;        
         var phoneNumber = {
             phone: user.tel,
             country: 'BR'
-        }
-        
+        }        
         phonelib.isValid(phoneNumber, function(err, result){
-            console.log(result.isValid)
-            if (!result.isValid) erros.push("tell errado hein!")
+            if (!result.isValid) erros.push("Telefone Invalido")
         });
 
-        if (user.password != user.confirmPassword) erros.push("Senha tem q ser igual AAAAAAAA")
+        if (user.password != user.confirmPassword) erros.push("As senhas devem ser iguais")
+        if (!validacao.test(user.email)) erros.push("Email invalido")
         
-        if (erros.length > 0) alert(erros) 
+        if (erros.length > 0) {
+            setErrors(erros) 
+            return('')
+        }
+        
+        
+        axios.post('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/register', 
+            {
+                nick: user.nick,
+                email: user.email,
+                pwd: user.password,
+                descr: "",
+                birth: `${new Date(user.birth.startDate).getDate()+1}/${new Date(user.birth.startDate).getMonth()+1}/${new Date(user.birth.startDate).getFullYear()}`
+            })
+            .then((resp) => {
+                console.log(resp.data)
+                if(resp.data.token){
+                localStorage.setItem('token', resp.data.token)
+                localStorage.setItem('nick', user.nick)
+                window.location.reload(false);}
+                else setErrors([resp.data.erro])
+            })
+            .catch((erro) => {
+                console.log(erro)
+            })
+            
     }
-    
 
   return (
     <div className='overflow-hidden h-screen'>
@@ -86,12 +112,13 @@ export default function Register() {
                         <div className='h-full flex flex-col gap-[3.70vh] '>
                             <div className='flex flex-col items-center'>
                                 <div className='flex flex-col items-center gap-[1.5vh]'>
+                                            
+
                                     <Input classNameDiv={"w-[37.22vh]"} value={user.nick} placeholder="Nickname/User" 
                                         onChange={e => setUser({...user, nick: e.target.value})}/>
 
                                     <Input classNameDiv={"w-[37.22vh]"} value={user.email} placeholder="Email" 
                                                 onChange={e => setUser({...user, email: e.target.value})}/>
-                                            
                                     <div className='flex gap-[1.85vh]'>
                                         <Input type='password' classNameDiv={"w-[17.59vh]"} value={user.password} placeholder="Senha" 
                                             onChange={e => setUser({...user, password: e.target.value})}/>
@@ -127,6 +154,13 @@ export default function Register() {
                                             classname={""}
                                             base64Icon={icon}
                                         />
+                                    </div> 
+                                    <div className='w-full pl-[3.5vh]'>                                    
+                                        {
+                                            errors.map(erro => (
+                                                <p className="font-inter text-[1.7vh] text-[#EB0000]">{erro}</p>  
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                     
@@ -141,50 +175,9 @@ export default function Register() {
                 <div className='w-1/2 p-[3.70vh] justify-center flex flex-col bg-gradient-to-t from-[#7F04DF] to-[#313F96] rounded-r-[1.11vh]'>
                      <div className='flex w-full h-full p-[3.70vh] flex-col justify-between'>
                         
-                        <p className='text-end text-[3.80vh] font-nonito text-white leading-[5vh]'>ESCOLHA SEUS <br/> PRINCIPAIS <br/> ...INTERESSES</p>
                        
                         <div className='h-full flex flex-col pt-[6vh] pl-[4vh]'> 
-                          <div className='space-y-[2vh]'>
-                            <Checkbox 
-                                labelStyle={'text-white text-[1.85vh] font-inter'} 
-                                label={choice1.label} 
-                                checked={choice1.checked}
-                                onChange={e=>setChoise1({...choice1, checked:!choice1.checked})}
-                                base64Icon={icon}
-                                classname={"w-[2vh] h-[2vh] checked:bg-white ring-white ring-[0.25vh]"}/>
-
-                            <Checkbox 
-                                labelStyle={'text-white text-[1.85vh] font-inter'} 
-                                label={choice2.label} 
-                                checked={choice2.checked}
-                                onChange={e=>setChoise2({...choice2, checked:!choice2.checked})}
-                                base64Icon={icon}
-                                classname={"w-[2vh] h-[2vh] checked:bg-white ring-white ring-[0.25vh]"}/>
-                            
-                            <Checkbox 
-                                labelStyle={'text-white text-[1.85vh] font-inter'} 
-                                label={choice3.label} 
-                                checked={choice3.checked}
-                                onChange={e=>setChoise3({...choice3, checked:!choice3.checked})}
-                                base64Icon={icon}
-                                classname={"w-[2vh] h-[2vh] checked:bg-white ring-white ring-[0.25vh]"}/>
-
-                            <Checkbox 
-                                labelStyle={'text-white text-[1.85vh] font-inter'} 
-                                label={choice4.label} 
-                                checked={choice4.checked}
-                                onChange={e=>setChoise4({...choice4, checked:!choice4.checked})}
-                                base64Icon={icon}
-                                classname={"w-[2vh] h-[2vh] checked:bg-white ring-white ring-[0.25vh]"}/>
-
-                            <Checkbox 
-                                labelStyle={'text-white text-[1.85vh] font-inter'} 
-                                label={choice5.label} 
-                                checked={choice5.checked}
-                                onChange={e=>setChoise5({...choice5, checked:!choice5.checked})}
-                                base64Icon={icon}
-                                classname={"w-[2vh] h-[2vh] checked:bg-white ring-white ring-[0.25vh]"}/>    
-                            </div>                                                   
+                                                                          
                         </div>
                     </div>
 

@@ -4,7 +4,8 @@ export default function Input({className, classNameDiv, onChange, value, placeho
 
     return(
         <>
-            <div className={classNameDiv}>
+            <div className={classNameDiv}>              
+
                 <input 
                     
                     type={type ? type : 'text'} 

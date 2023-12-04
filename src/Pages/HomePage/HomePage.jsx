@@ -3,10 +3,27 @@ import NavBar from '../../Components/Navbar/Navbar';
 import CardCampanha from '../../Components/CardCampanha/CardCampanha';
 import { useEffect } from 'react';
 import CardFicha from '../../Components/CardFicha/CardFicha';
+import axios from 'axios';
 
 
 
 export default function HomePage() {
+
+    const [user, setUser] = useState({
+        nm_nick: ''
+    })    
+    useEffect(()=>{
+        axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/read?auth=${localStorage.getItem('token')}`)
+            .then(resp => {
+                if(resp.data.items.length == 0) {
+                    localStorage.clear()   
+                    window.location.reload(false);        
+                }
+                setUser(resp.data.items[0])
+            })
+    },[])
+
+    console.log(user)
 
   return (
     <div className=''>             
@@ -14,7 +31,7 @@ export default function HomePage() {
         <div className='h-[83.33vh] '>
             <div className='w-full h-1/2 flex'>
                 <div className='w-1/2 flex flex-col justify-center items-start pl-[12vh] pt-[7vh] gap-[2vh]'>
-                    <p className='text-[5.55vh] font-nonito text-[#313F96]'>Seja bem vindo, <b className='font-normal text-[#7D06DD]'>@USER</b>!</p>
+                    <p className='text-[5.55vh] font-nonito text-[#313F96]'>Seja bem vindo, <b className='font-normal text-[#7D06DD]'>@{user.nm_nick}</b>!</p>
                     <p className='text-[#313F96] font-inter text-[1.85vh] font-semibold '>Explore nosso site e descubra novas possibilidades para suas <br/> aventuras!</p>
                 </div>
                 <div className='w-1/2 pl-[4vh] pt-[2vh]'>

@@ -1,10 +1,10 @@
 export default function CardCampanha({active, title, slots, genders, age, isPrivate, notActive, imgURL}){
 
-        console.log(genders)
+    //     console.log(genders)
     
-    genders.map(gender => {
-        console.log(gender)
-    })
+    // genders.map(gender => {
+    //     console.log(gender)
+    // })
 
     return(
         <div className='h-[26.01vh] w-[37.96vh] bg-white rounded-[1vh]'>

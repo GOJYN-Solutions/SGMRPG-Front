@@ -6,6 +6,7 @@ import Input from '../../Components/Input/Input';
 import ButtonForm from '../../Components/ButtonForm/ButtonForm';
 import { GoogleIcon } from '../../Components/Icons/GoogleIcon';
 import NavBar from '../../Components/Navbar/Navbar';
+import axios from 'axios';
 
 export default function Login() {
 
@@ -15,6 +16,27 @@ export default function Login() {
   })
 
   let typeText = 'text-[3.70vh] text-white font-nonito '
+
+  const submitForm = () =>{
+    var validacao = /\S+@\S+\.\S+/;
+    axios.put('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/login', 
+    {
+      nick: validacao.test(user.login) ? '' : user.login,
+      email: validacao.test(user.login) ? user.login : '',
+      pwd: user.password
+    })
+    .then((resp) => {
+      console.log(resp.data)
+      if(resp.data.token){
+        localStorage.setItem('token', resp.data.token)
+        localStorage.setItem('nick', user.login)
+        window.location.reload(false);}
+      else alert(resp.data.erro)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
 
 
   return (
@@ -64,7 +86,7 @@ export default function Login() {
               
             </div>
             <div className="flex flex-col items-center justify-center mt-[5vh] gap-[5vh]">
-              <ButtonForm className={'bg-[#7A08DB] text-white w-[25.64vh] rounded-[1.85vh]'} onClick={e=>alert(`Login:${user.login} password:${user.password}`)} text={'ENTRAR'}/>
+              <ButtonForm className={'bg-[#7A08DB] text-white w-[25.64vh] rounded-[1.85vh]'} onClick={e=>submitForm()} text={'ENTRAR'}/>
               <button className="flex p-[1vh] gap-[1vh] items-center border border-black rounded-[3vh] font-inter text-sm">
                 <div className='w-[2.5vh]'><GoogleIcon/></div>
                 <p className='text-[1.4vh] font-extrabold'>Entre com sua conta Google</p>

@@ -2,6 +2,12 @@ import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {Roll1, Roll2, Roll3, Roll4, Roll5, Roll6} from '../../Components/Icons/Rolls';
 import NavBar from '../../Components/Navbar/Navbar';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import '@splidejs/react-splide/css/skyblue';
+import '@splidejs/react-splide/css/sea-green';
+import '@splidejs/react-splide/css/core';
+
 
 export default function LandingPage() {
     const [password, setPassword] = useState('')
@@ -190,13 +196,15 @@ export default function LandingPage() {
               </defs>
             </svg>
       </div>   
-          <div className='w-[74.16vh] h-[54.35vh] bg-[#FF0000] rounded-[2vh]'>
-            <div className='flex items-end justify-center w-full py-[6vh] gap-[1vh] h-full'>
-              <div className='w-[1.20vh] h-[1.20vh] rounded-full bg-[#D9D9D9]'></div>
-              <div className='w-[1.20vh] h-[1.20vh] rounded-full bg-[#D9D9D9]'></div>
-              <div className='w-[1.20vh] h-[1.20vh] rounded-full bg-[#D9D9D9]'></div>
-              <div className='w-[1.20vh] h-[1.20vh] rounded-full bg-[#D9D9D9]'></div>
-            </div>
+          <div className='w-[80vh] h-[54.35vh] bg-[#d3d0d0] rounded-[2vh]'>
+            <Splide aria-label="My Favorite Images" options={{height: '40vh', drag: 'free', }}>
+              <SplideSlide>
+                <div className='w-full h-full bg-emerald-500 rounded-[2vh]' ></div>
+              </SplideSlide>
+              <SplideSlide>
+                <div className='w-full h-full bg-orange-500 rounded-[2vh]' ></div>
+              </SplideSlide>
+            </Splide>
           </div>
 
           <div className='w-[54.90vh] space-y-[2vh] pt-[3vh]'>
