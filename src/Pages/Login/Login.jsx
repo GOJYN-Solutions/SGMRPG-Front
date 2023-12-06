@@ -15,10 +15,20 @@ export default function Login() {
     password: ''
   })
 
-  let typeText = 'text-[3.70vh] text-white font-nonito '
+  const [errors, setErrors] = useState([])
+
+  let typeText = 'text-[3.70vh] text-white font-nonito'
 
   const submitForm = () =>{
     var validacao = /\S+@\S+\.\S+/;
+    let alertas = []
+
+    if(user.login == '' || user.password == '') {
+      alertas.push('O preenchimento do login e da senha são obrigatórios!')  
+      setErrors(alertas)
+      return('')
+    }
+
     axios.put('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/login', 
     {
       nick: validacao.test(user.login) ? '' : user.login,
@@ -26,16 +36,19 @@ export default function Login() {
       pwd: user.password
     })
     .then((resp) => {
-      console.log(resp.data)
       if(resp.data.token){
         localStorage.setItem('token', resp.data.token)
         localStorage.setItem('nick', user.login)
-        window.location.reload(false);}
-      else alert(resp.data.erro)
+        window.location.reload(false)
+      }        
+      else {
+        alertas.push(resp.data.erro)
+        setErrors(alertas)
+      }
     })
     .catch((error)=>{
-      console.log(error)
-    })
+      alertas.push(error)
+    })    
   }
 
 
@@ -79,6 +92,13 @@ export default function Login() {
                     onChange={e => setUser({...user, login: e.target.value})}/>
                 <Input classNameDiv={'w-[37.22vh]'} type="password" value={user.password} placeholder="Senha" 
                 onChange={e => setUser({...user, password: e.target.value})} />
+            </div>
+            <div className='w-[35vh] pl-[1vh]'>                                    
+                {
+                    errors.map(erro => (
+                        <p className="font-inter text-[1.7vh] text-[#EB0000]">{erro}</p>  
+                    ))
+                }
             </div>
             <div className="flex  mx-[1vh] justify-between">
               <Link className='text-[1.50vh] font-nonito underline text-[#7A08DB]' to='/forgotpassword'>Esqueceu a senha?</Link>

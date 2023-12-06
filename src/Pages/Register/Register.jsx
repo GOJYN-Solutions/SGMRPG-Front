@@ -95,7 +95,7 @@ export default function Register() {
                 if(resp.data.token){
                 localStorage.setItem('token', resp.data.token)
                 localStorage.setItem('nick', user.nick)
-                window.location.reload(false);}
+                window.location.reload(false)}
                 else setErrors([resp.data.erro])
             })
             .catch((erro) => {
