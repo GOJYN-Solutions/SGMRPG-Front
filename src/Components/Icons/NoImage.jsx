@@ -1,0 +1,4 @@
+export function NoImage(){
+    return(
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6C76B0" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 64 80" space="preserve"><polygon points="52.8,14 60,14 60,50 16.8,50 14.8,52 62,52 62,12 54.8,12 "/><polygon points="11.2,50 4,50 4,14 47.2,14 49.2,12 2,12 2,52 9.2,52 "/><polygon points="6,48 13.2,48 31.6,29.5 24,16 "/><polygon points="38.5,41.7 33.7,33.2 18.8,48 58,48 46,31.1 "/><circle cx="53" cy="21" r="5"/><rect x="-9" y="31" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -13.2548 32)" width="82" height="2"/><text x="0" y="79" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"></text><text x="0" y="84" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"></text></svg>   )
+}

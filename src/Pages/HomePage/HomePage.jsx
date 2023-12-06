@@ -23,8 +23,6 @@ export default function HomePage() {
             })
     },[])
 
-    console.log(user)
-
   return (
     <div className=''>             
         <NavBar navbarLogada={true}/>
