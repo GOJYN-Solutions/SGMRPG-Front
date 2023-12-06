@@ -8,6 +8,7 @@ import phonelib from 'phonelib'
 import { Link } from 'react-router-dom';
 import NavBar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
+import moment from 'moment';
 
 
 export default function Register() {
@@ -71,19 +72,23 @@ export default function Register() {
         if (user.password != user.confirmPassword) erros.push("As senhas devem ser iguais")
         if (!validacao.test(user.email)) erros.push("Email invalido")
         
+        if(moment(user.birth.startDate).isAfter(moment())){
+            erros.push("Digite uma data de nascimento valida")
+        }
+
         if (erros.length > 0) {
             setErrors(erros) 
             return('')
         }
         
-        
+
         axios.post('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/register', 
             {
                 nick: user.nick,
                 email: user.email,
                 pwd: user.password,
                 descr: "",
-                birth: `${new Date(user.birth.startDate).getDate()+1}/${new Date(user.birth.startDate).getMonth()+1}/${new Date(user.birth.startDate).getFullYear()}`
+                birth: moment(user.birth.startDate).format("DD/MM/YYYY")
             })
             .then((resp) => {
                 console.log(resp.data)

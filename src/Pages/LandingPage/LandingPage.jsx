@@ -224,8 +224,8 @@ export default function LandingPage() {
         </div>
 
         <p className='font-inter text-[2.03vh] text-white text-center leading-[3.2vh]'>
-          Somos um grupo de faculdade em busca de sua formação, criamos o projeto Runesys como nosso TCC.<br/>
-          Desde a escolha do tema, temos estudado e estamos nos empenhando cada vez mais para que este software possa ajudar <br/> vários nerds fedidos por aí, que querem se divertir sem a necessidade de tanta dor de cabeça e confusão com os dados <br/> gerados durante as sessões.
+          Somos um grupo de faculdade em busca de sua formação, criamos o projeto MyRune como nosso TCC.<br/>
+          Desde a escolha do tema, temos estudado e estamos nos empenhando cada vez mais para que este software possa ajudar <br/> jogadores de RPG, que querem se divertir sem a necessidade de tanta dor de cabeça e confusão com os dados <br/> gerados durante as sessões.
         </p>
       </div>
       
@@ -237,13 +237,13 @@ export default function LandingPage() {
             <p className='font-inter font-extrabold text-[1.85vh] text-white'>JENNYFER MARINHO</p>
             <div className='w-[21.82vh] h-[21.05vh] bg-blue-gray-500 rounded-full'></div>
             <p className='font-inter font-semibold text-[2.31vh] text-white'>Designer</p>
-            <p className='font-inter text-[1.85vh] text-center text-white'>Estudante, 20 anos, fez as <br/> principais telas do <br/> sistema.</p>
+            <p className='font-inter text-[1.85vh] text-center text-white'>Estudante, 20 anos, fez o design das <br/> principais telas do <br/> sistema.</p>
           </div>
           <div className='w-[31.38vh] h-[48.42vh] bg-gradient-to-b from-[#7F04DF] to-[#313F96] rounded-[2vh] flex flex-col items-center justify-center gap-[2vh]'>
-            <p className='font-inter font-extrabold text-[1.85vh] text-white'>JENNYFER MARINHO</p>
+            <p className='font-inter font-extrabold text-[1.85vh] text-white'>GUILHERME FRIEDRICH SOUSA</p>
             <div className='w-[21.82vh] h-[21.05vh] bg-blue-gray-500 rounded-full'></div>
-            <p className='font-inter font-semibold text-[2.31vh] text-white'>Designer</p>
-            <p className='font-inter text-[1.85vh] text-center text-white'>Estudante, 20 anos, fez as <br/> principais telas do <br/> sistema.</p>
+            <p className='font-inter font-semibold text-[2.31vh] text-white'>FrontEnd</p>
+            <p className='font-inter text-[1.85vh] text-center text-white'>Estudante, 20 anos, fez a c <br/> principais telas do <br/> sistema.</p>
           </div><div className='w-[31.38vh] h-[48.42vh] bg-gradient-to-b from-[#7F04DF] to-[#313F96] rounded-[2vh] flex flex-col items-center justify-center gap-[2vh]'>
             <p className='font-inter font-extrabold text-[1.85vh] text-white'>JENNYFER MARINHO</p>
             <div className='w-[21.82vh] h-[21.05vh] bg-blue-gray-500 rounded-full'></div>

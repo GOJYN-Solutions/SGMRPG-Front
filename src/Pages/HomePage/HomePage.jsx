@@ -84,24 +84,18 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className='w-full flex justify-center items-center pb-[7vh] gap-[6.3vh] h-1/2'>
-                <div className='w-fit h-fit bg-gradient-to-b from-[#7F04DF] to-[#313F96] p-[0.1vh] rounded-[1.5vh] '>
-                    <div className='w-[46.94vh] bg-white h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                        <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar campanha</p>
-                        <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Crie uma campanha e divirta-se com  seus amigos!</p>
-                    </div>
+            <div className='w-full flex justify-center items-center pb-[7vh] gap-[6.3vh] h-1/2'>                
+                <div className='w-[46.94vh] bg-white border-[#5722BA] border-[0.1vh] h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
+                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar campanha</p>
+                    <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Crie uma campanha e divirta-se com  seus amigos!</p>
                 </div>
-                <div className='w-fit h-fit bg-gradient-to-b from-[#7F04DF] to-[#313F96] p-[0.1vh] rounded-[1.5vh] '>
-                    <div className='w-[46.94vh] bg-white h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                        <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar ficha</p>
-                        <p className='font-inter text-[1.38vh] font-bold'>Crie fichas para utilizar em suas campanhas!</p>
-                    </div>
+                <div className='w-[46.94vh] bg-white h-[23.79vh] border-[#5722BA] border-[0.1vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
+                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar ficha</p>
+                    <p className='font-inter text-[1.38vh] font-bold'>Crie fichas para utilizar em suas campanhas!</p>
                 </div>
-                <div className='w-fit h-fit bg-gradient-to-b from-[#7F04DF] to-[#313F96] p-[0.1vh] rounded-[1.5vh] '>
-                    <div className='w-[46.94vh] bg-white h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                        <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Ler guia de usuário</p>
-                        <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Descubra como funciona nosso sistema lendo este rápido guia de usuário.</p>
-                    </div>
+                <div className='w-[46.94vh] bg-white h-[23.79vh] border-[#5722BA] border-[0.1vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
+                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Ler guia de usuário</p>
+                    <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Descubra como funciona nosso sistema lendo este rápido guia de usuário.</p>
                 </div>
             </div>            
         </div>    
@@ -122,7 +116,7 @@ export default function HomePage() {
                     genders={[
                                 {title: "Fantasia", color: "#817EEF"}, 
                                 {title: "Oneshot", color: "#EFAE7E"},
-                                {title: "Gay", color: "#EF7EE4"}
+                                {title: "+", color: "#EF7EE4"}
                             ]}
                         imgURL={"/imagemcampanha/campanha.jpg"}
                 />
@@ -136,7 +130,7 @@ export default function HomePage() {
                     genders={[
                                 {title: "Fantasia", color: "#817EEF"}, 
                                 {title: "Oneshot", color: "#EFAE7E"},
-                                {title: "Gay", color: "#EF7EE4"}
+                                {title: "+", color: "#EF7EE4"}
                             ]}
                         imgURL={"/imagemcampanha/campanha.jpg"}
                 />
@@ -149,7 +143,7 @@ export default function HomePage() {
                     genders={[
                                 {title: "Fantasia", color: "#817EEF"}, 
                                 {title: "Oneshot", color: "#EFAE7E"},
-                                {title: "Gay", color: "#EF7EE4"}
+                                {title: "+", color: "#EF7EE4"}
                             ]}
                         imgURL={"/imagemcampanha/campanha.jpg"}
                     notActive={true}
@@ -157,8 +151,8 @@ export default function HomePage() {
             </div>
         </div>
             <div className='h-[172.5926vh] flex flex-col items-center pt-[7vh] gap-[5vh]'>
-                <p className='font-nonito text-[2.7778vh] font-semibold'>Explore alguns <b className='font-normal text-white px-[0.5vh] bg-[#646FB0]'> conteúdos em alta </b></p>
-                <p className='font-inter text-[1.8519vh]'>Verifique alguns dos sla oq bla bla bla não quero saber.</p>
+                <p className='font-nonito text-[2.7778vh] font-semibold'>Explore alguns <b className='font-normal text-white px-[0.5vh] bg-[#646FB0]'> conteúdos </b></p>
+                <p className='font-inter text-[1.8519vh]'>Verifique alguns modelos de fichas e camapanhas.</p>
                 <div className='bg-[#646FB0] rounded-[1.8519vh] py-[5vh] px-[10.5vh] flex flex-col gap-[10vh]'>
                     <div className='flex flex-col gap-[3.5vh] '>
                         <p className='text-white font-nonito text-[2.5333vh] '>Modelos de ficha</p>
@@ -181,7 +175,7 @@ export default function HomePage() {
                                 genders={[
                                             {title: "Fantasia", color: "#817EEF"}, 
                                             {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "Gay", color: "#EF7EE4"}
+                                            {title: "+", color: "#EF7EE4"}
                                         ]}
                             />
                             <CardCampanha 
@@ -193,7 +187,7 @@ export default function HomePage() {
                                 genders={[
                                             {title: "Fantasia", color: "#817EEF"}, 
                                             {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "Gay", color: "#EF7EE4"}
+                                            {title: "+", color: "#EF7EE4"}
                                         ]}
                                     imgURL={"/imagemcampanha/campanha.jpg"}
                             />
@@ -206,7 +200,7 @@ export default function HomePage() {
                                 genders={[
                                             {title: "Fantasia", color: "#817EEF"}, 
                                             {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "Gay", color: "#EF7EE4"}
+                                            {title: "+", color: "#EF7EE4"}
                                         ]}
                                     imgURL={"/imagemcampanha/campanha.jpg"}
 
