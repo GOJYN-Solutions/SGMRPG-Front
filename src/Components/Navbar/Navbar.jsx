@@ -59,7 +59,11 @@ export default function NavBar({buttons, navbarLogada}) {
               
               </div>
               <div className="flex">
-                <div className="w-[4.35vh] h-[4.35vh] rounded-full bg-[#D9D9D9]"></div>
+                <button onClick={e=>{
+                  localStorage.clear()
+                  window.location.reload()
+                  }} className="" to='/modelos'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Sair</p></button>
+
               </div>
               </>}          
                 

@@ -106,10 +106,10 @@ export default function() {
                                             {
                                                 fields.map(field => (
                                                     <div className="flex items-center gap-[1vh] ">
-                                                        <div className="bg-[#E0E2EF] w-1/2 rounded-full px-[1vh] py-[0.2vh] flex ">
+                                                        <div className="bg-[#E0E2EF]  rounded-full px-[1vh] py-[0.2vh] flex ">
                                                             <p className="font-inter font-semibold text-[1.6667vh] text-[#313F96]">{field.nm_field}:</p>
                                                         </div>
-                                                        <p className="w-1/2 font-inter font-black text-[1.6667vh]">{`${field.qt_value}`}</p>
+                                                        <p className=" font-inter font-black text-[1.6667vh]">{`${field.qt_value}`}</p>
                                                     </div>
                                                 ))    
                                             }

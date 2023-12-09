@@ -173,7 +173,7 @@ export default function() {
                 </div>
                 <div className="w-[143.6111vh] h-[88.1481vh] flex flex-col justify-end">
                     <div className="w-[143.6111vh] h-[82.2222vh] flex flex-col bg-white rounded-t-[1vh]">
-                        <div className="w-full h-[11.1111vh] flex items-center justify-center gap-[20vh]">
+                        <div className="w-full h-[11.1111vh] flex items-center justify-center px-[10vh] gap-[20vh]">
                             <div className="flex items-center justify-center gap-[2vh]">
                                 <p className="font-inter text-[1.5vh] text-[#A52EFF] font-[1000] pt-[0.3vh]">FILTRAR</p>
                                 <Input font={'font-inter'} placeholder={'Nome'} className={'h-[3.5vh] w-[15vh] text-[#ADADAD] text-[1.39vh]'}/>
