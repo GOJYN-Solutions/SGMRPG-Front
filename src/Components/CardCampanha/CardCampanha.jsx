@@ -49,9 +49,9 @@ export default function CardCampanha({active, title, slots, genders, age, isPriv
                     </div>
 
                     <div className='h-full flex items-center justify-centers gap-[0.5vh] '>
-                        <div className='w-[2.2vh] pb-[0.2vh]'>
+                        {/* <div className='w-[2.2vh] pb-[0.2vh]'>
                             <img src="/icons/pessoas.png" alt="" />
-                        </div>
+                        </div> */}
                         <p className='font-nonito text-[1.8519vh] '>{slots}</p>
                     </div>
                 </div>

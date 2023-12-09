@@ -94,12 +94,12 @@ export default function () {
                             </div>
                             <div className='ml-[11vh] w-[36.6667vh] bg-[#EAECF5] rounded-[0.9259vh] h-[21.4815vh] py-[2.5vh] px-[2.4vh]'>
                                 {edit &&
-                                    <pre className='text-[#75767A] font-inter text-[2vh]'>
+                                    <pre className='text-[#75767A] w-full overflow-auto text font-inter break-words text-[1.65vh] whitespace-pre-wrap'>
                                         {user.ds_user}
                                     </pre>
                                 }
                                 {!edit &&
-                                    <textarea onChange={e=> setUser(user=> ({...user, ds_user:e.target.value}))} maxLength={80} rows="2" className='bg-[#EAECF5] w-full h-full text-[#75767A] font-inter text-[2vh]' value={user.ds_user} name="" id="" cols="30" rows="10"></textarea>
+                                    <textarea placeholder='Digite uma descrição para o seu perfil...' onChange={e=> setUser(user=> ({...user, ds_user:e.target.value}))} maxLength={80} rows="2" className='bg-[#EAECF5] w-full h-full text-[#75767A] font-inter text-[1.65vh]' value={user.ds_user} name="" id="" cols="30" rows="10"></textarea>
                                 }       
                             </div>
                             

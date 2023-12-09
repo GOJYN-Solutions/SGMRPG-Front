@@ -4,6 +4,7 @@ import CardCampanha from '../../Components/CardCampanha/CardCampanha';
 import { useEffect } from 'react';
 import CardFicha from '../../Components/CardFicha/CardFicha';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -11,17 +12,34 @@ export default function HomePage() {
 
     const [user, setUser] = useState({
         nm_nick: ''
-    })    
+    }) 
+
+    const [fichas, setFichas] = useState([])
+
+    const [campanhas, setCampanhas] = useState([])
+
+    
     useEffect(()=>{
-        axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/read?auth=${localStorage.getItem('token')}`)
-            .then(resp => {
-                if(resp.data.items.length == 0) {
-                    localStorage.clear()   
-                    window.location.reload(false);        
-                }
-                setUser(resp.data.items[0])
+        axios.get('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/sheetModel/public')
+        .then(resp => {
+                setFichas(resp.data.items)            
             })
-    },[])
+
+        axios.get('https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/user/read?auth='+localStorage.getItem('token'))
+        .then(resp => {
+                setUser({
+                    nm_nick: resp.data.items[0].nm_nick
+                })
+            })
+
+        axios.get(`https://ga2d803698dd4bc-adbsgmrpg.adb.sa-saopaulo-1.oraclecloudapps.com/ords/wksp_gojyn/campaignModel/allPublicCampaign?auth=${localStorage.getItem('token')}`)
+        .then(resp => {
+                setCampanhas(resp.data.items)
+            })
+
+            
+    }, [])
+
 
   return (
     <div className=''>             
@@ -84,19 +102,19 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className='w-full flex justify-center items-center pb-[7vh] gap-[6.3vh] h-1/2'>                
-                <div className='w-[46.94vh] bg-white border-[#5722BA] border-[0.1vh] h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar campanha</p>
-                    <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Crie uma campanha e divirta-se com  seus amigos!</p>
-                </div>
-                <div className='w-[46.94vh] bg-white h-[23.79vh] border-[#5722BA] border-[0.1vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar ficha</p>
-                    <p className='font-inter text-[1.38vh] font-bold'>Crie fichas para utilizar em suas campanhas!</p>
-                </div>
-                <div className='w-[46.94vh] bg-white h-[23.79vh] border-[#5722BA] border-[0.1vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
-                    <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Ler guia de usuário</p>
-                    <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Descubra como funciona nosso sistema lendo este rápido guia de usuário.</p>
-                </div>
+            <div className='w-full flex justify-center items-center pb-[7vh] gap-[6.3vh] h-1/2'>     
+                <Link className=' ' to='/campanhas'>             
+                    <div className='w-[46.94vh] bg-white border-[#5722BA] border-[0.1vh] h-[23.79vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
+                        <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar campanha</p>
+                        <p className='font-inter text-[1.38vh] font-bold w-[30.74vh]'>Crie uma campanha e divirta-se com  seus amigos!</p>
+                    </div>
+                </Link>
+                <Link className=' ' to='/modelos'>   
+                    <div className='w-[46.94vh] bg-white h-[23.79vh] border-[#5722BA] border-[0.1vh] rounded-[1.5vh] pl-[5vh] pt-[6vh] flex flex-col gap-[1.5vh]'>
+                        <p className='font-nonito text-[2.31vh] font-medium text-[#7D06DD]'>Criar ficha</p>
+                        <p className='font-inter text-[1.38vh] font-bold'>Crie fichas para utilizar em suas campanhas!</p>
+                    </div>                
+                </Link>
             </div>            
         </div>    
         <div className='h-[50.18vh] bg-gradient-to-b to-[#2C3786] from-[#461790] pt-[2vh] flex flex-col gap-[5vh]'>
@@ -156,55 +174,37 @@ export default function HomePage() {
                 <div className='bg-[#646FB0] rounded-[1.8519vh] py-[5vh] px-[10.5vh] flex flex-col gap-[10vh]'>
                     <div className='flex flex-col gap-[3.5vh] '>
                         <p className='text-white font-nonito text-[2.5333vh] '>Modelos de ficha</p>
-                        <div className='flex gap-[5.5vh]'>   
-                            <CardFicha name={"Isolda"} age={35} gender={'f'} type={'Druída'} description={"23456789 123456789 123456789 123456789 123456789 123456789 123456789 1234567"}/>
-                            <CardFicha name={"Cleber"} age={23} gender={'m'} type={'Olokinho'} description={'olokinho'}/>
-                            <CardFicha name={"Cleber"} age={23} gender={'m'} type={'Olokinho'} description={'olokinho'}/>
-                            <CardFicha name={"Cleber"} age={23} gender={'m'} type={'Olokinho'} description={'olokinho'}/>
-                        </div>
+                        <Link className=' ' to='/fichas'>   
+                            <div className='flex gap-[5.5vh]'>
+                                    {
+                                        fichas.map((ficha, i) => {
+                                            if(i <= 3) return ( 
+                                                <>
+                                                    <CardFicha key={ficha.cd_sheetmodel} name={ficha.nm_class} age={ficha.qt_age} gender={ficha.nm_genre} type={ficha.nm_type} description={ficha.ds_sheet}/>
+                                                </> )
+                                        })
+                                    }
+                            </div>
+                        </Link>
                     </div>
                     <div className='flex flex-col gap-[3.5vh] '>
                         <p className='text-white font-nonito text-[2.5333vh] '>Modelos de Campanha</p>
-                        <div className='flex gap-[5.5vh]'>   
-                            <CardCampanha 
-                                isPrivate={false}
-                                age={"+18"}
-                                title={"Nome da campanha"}
-                                slots={"9/10"}
-                                active={true}
-                                genders={[
-                                            {title: "Fantasia", color: "#817EEF"}, 
-                                            {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "+", color: "#EF7EE4"}
-                                        ]}
-                            />
-                            <CardCampanha 
-                                isPrivate={false}
-                                age={"+18"}
-                                title={"Nome da campanha"}
-                                slots={"9/10"}
-                                active={true}
-                                genders={[
-                                            {title: "Fantasia", color: "#817EEF"}, 
-                                            {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "+", color: "#EF7EE4"}
-                                        ]}
-                                    imgURL={"/imagemcampanha/campanha.jpg"}
-                            />
-                            <CardCampanha 
-                                isPrivate={false}
-                                age={"+18"}
-                                title={"Nome da campanha"}
-                                slots={"9/10"}
-                                active={true}
-                                genders={[
-                                            {title: "Fantasia", color: "#817EEF"}, 
-                                            {title: "Oneshot", color: "#EFAE7E"},
-                                            {title: "+", color: "#EF7EE4"}
-                                        ]}
-                                    imgURL={"/imagemcampanha/campanha.jpg"}
+                        <div className='flex gap-[5.5vh]'>
 
-                            />
+                            {
+                                campanhas.map((campanha, i) => {
+                                    if(i <= 3) return ( 
+                                        <>
+                                            <CardCampanha 
+                                                isPrivate={campanha.ic_public=="1"?false:true}
+                                                age={"+"+campanha.qt_minimal_age}
+                                                title={campanha.nm_campaign}
+                                                active={true}
+                                                genders={[]}
+                                            />
+                                        </> )
+                                })
+                            }
                         </div>
                     </div>
                     <div className='flex flex-col gap-[3.5vh]'>

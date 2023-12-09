@@ -51,8 +51,7 @@ export default function NavBar({buttons, navbarLogada}) {
               </Link>
             </div>}
             { navbarLogada && <>
-              <div className="flex w-[55vh] gap-[4vh] ">
-                <Link className="" to='/guia'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Guia de Usuário</p></Link>
+              <div className="flex pl-[7vh] w-[55vh] gap-[4vh] ">
                 <Link className="" to='/modelos'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Modelos</p></Link>
                 <Link className="" to='/campanhas'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Campanhas</p></Link>
                 <Link className="" to='/fichas'><p className="font-inter font-black  text-[#7D06DD] text-[1.5vh]">Fichas</p></Link>

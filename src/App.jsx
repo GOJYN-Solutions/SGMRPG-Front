@@ -8,6 +8,10 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword"
 import LandingPage from "./Pages/LandingPage/LandingPage"
 import HomePage from "./Pages/HomePage/HomePage";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
+import Modelos from "./Pages/Modelos/Modelos";
+import Fichas from "./Pages/Fichas/Fichas";
+import Campanhas from "./Pages/Campanhas/Campanhas";
+import ModeloCampanhas from "./Pages/ModeloCampanhas/ModeloCampanhas";
 
 
 export default function App() {
@@ -16,6 +20,10 @@ export default function App() {
     rotas = (
       <>
         <Route path="/profile" element={<ProfilePage/>}></Route>
+        <Route path="/fichas" element={<Modelos/>}></Route>
+        <Route path="/campanhas" element={<Campanhas/>}></Route>
+        <Route path="/modelos" element={<Fichas/>}></Route>
+        <Route path="/modelosCampanhas" element={<ModeloCampanhas/>}></Route>
         <Route path="/*" element={<HomePage/>}></Route>
       </>
     )

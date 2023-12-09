@@ -149,17 +149,7 @@ export default function Register() {
                                             <b className='text-red-900'>*</b>Campo opcional.
                                             
                                         </p>    
-                                    </div>
-                                    <div className='flex w-full items-center gap-[1vh] pl-[2vh] '>
-                                        <Checkbox 
-                                            labelStyle={"font-nonito text-[1.8vh] text-[#313F96]"} 
-                                            label={"Concordo com o Termo de Uso"}
-                                            checked={user.terms}
-                                            onChange={e=> setUser({...user, terms: !user.terms})}
-                                            classname={""}
-                                            base64Icon={icon}
-                                        />
-                                    </div> 
+                                    </div>                                   
                                     <div className='w-full pl-[3.5vh]'>                                    
                                         {
                                             errors.map(erro => (

@@ -1,6 +1,6 @@
-export default function Input({className, classNameDiv, onChange, value, placeholder, type, optional}){
+export default function Input({className, classNameDiv, onChange, value, placeholder, type, optional, font}){
 
-    let inputs = 'h-[4.27vh] w-full bg-white pl-[2.85vh] text-[1.65vh] font-nonito placeholder-[#989FCA] rounded-[1.85vh] text-start bg-[#F8F8F8]'
+    let inputs = `h-[4.27vh] w-full bg-white pl-[2.85vh] text-[1.65vh] ${font ? font : 'font-nonito'} placeholder-[#989FCA] rounded-[1.85vh] text-start bg-[#F8F8F8]`
 
     return(
         <>
@@ -9,7 +9,7 @@ export default function Input({className, classNameDiv, onChange, value, placeho
                 <input 
                     
                     type={type ? type : 'text'} 
-                    className={`${inputs} ${className} ${classNameDiv} border-[0.1vh] border-[#7A08DB]`} 
+                    className={`${className} ${inputs}  ${classNameDiv} border-[0.1vh] border-[#7A08DB]`} 
                     value={value} placeholder={placeholder}
                     onChange={onChange} required>
                         

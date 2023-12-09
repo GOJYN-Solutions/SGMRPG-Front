@@ -17,11 +17,16 @@ export default function CardFicha ({name, age, description, type, gender}) {
     }
 
     return (
-        <div className='w-[27.08vh] h-[25.9204vh] bg-white rounded-[0.8444vh]'>
+        <div className='w-[27.08vh] h-[25.9204vh] bg-white rounded-[0.8444vh] '>
             <div className='h-[15.6481vh] rounded-t-[0.8444vh]'>
-                <img className='h-full w-full object-cover' src="/imagemcampanha/personagem.png" alt="" />
+                {type == 'Item' &&
+                    <img className='h-full w-full object-cover' src="/imagemcampanha/item.jpg" alt="" />
+                }
+                {type == 'Personagem' &&
+                    <img className='h-full w-full object-cover' src="/imagemcampanha/Personagem.png" alt="" />
+                }
             </div>
-            <div className='flex flex-col pl-[1.5vh] pr-[2.5vh] pt-[2vh]'>
+            <div className='flex flex-col pl-[1.5vh] pr-[2.5vh] pt-[2vh] '>
                 <div className='flex justify-between items-center'>
                     <p className='font-nonito text-[2vh]'>{name}, <span className='text-[1.6vh]'>{age}</span></p>
                     <div className='flex gap-[1vh]'>
